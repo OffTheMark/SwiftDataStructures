@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: OrderedDictionary
+
 public struct OrderedDictionary<Key: Hashable, Value> {
     private var sortedKeys = Array<Key>()
     private var valuesByKey = Dictionary<Key, Value>()
