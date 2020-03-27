@@ -1,5 +1,5 @@
 //
-//  QueueAddRemoveTests.swift
+//  QueueUpdateTests.swift
 //  SwiftDataStructuresTests
 //
 //  Created by Marc-Antoine Malépart on 2020-03-27.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import SwiftDataStructures
 
-final class QueueAddRemoveTests: XCTestCase {
+final class QueueUpdateTests: XCTestCase {
     // MARK: Adding Elements to an Empty Queue
     
     func test_EmptyQueue_AfterEnqueuingElement_ContainsOnlyOneElement() {
