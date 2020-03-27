@@ -99,7 +99,7 @@ extension LinkedList: Sequence {
 
     public typealias Element = Element
 
-    public func makeIterator() -> Iterator {
+    public __consuming func makeIterator() -> Iterator {
         return Iterator(node: head)
     }
 

@@ -95,14 +95,20 @@ extension Deque: Sequence {
 
     public typealias Element = Element
 
-    public typealias Iterator = AnyIterator<Element>
-
-    public func makeIterator() -> AnyIterator<Element> {
-        var iterator = contents.makeIterator()
-
-        return AnyIterator({
-            return iterator.next()
-        })
+    public __consuming func makeIterator() -> Iterator {
+        return Iterator(contents.makeIterator())
+    }
+    
+    public struct Iterator: IteratorProtocol {
+        private var base: LinkedList<Element>.Iterator
+        
+        fileprivate init(_ base: LinkedList<Element>.Iterator) {
+            self.base = base
+        }
+        
+        public mutating func next() -> Element? {
+            return base.next()
+        }
     }
 }
 

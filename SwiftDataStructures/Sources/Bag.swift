@@ -100,14 +100,24 @@ public struct Bag<Item: Hashable> {
 extension Bag: Sequence {
     public typealias Element = (item: Item, count: Int)
 
-    public typealias Iterator = AnyIterator<Self.Element>
-
-    public func makeIterator() -> Iterator {
-        var iterator = contents.makeIterator()
-
-        return AnyIterator({
-            return iterator.next()
-        })
+    public __consuming func makeIterator() -> Iterator {
+        return Iterator(contents.makeIterator())
+    }
+    
+    public struct Iterator: IteratorProtocol {
+        private var base: Dictionary<Item, Int>.Iterator
+        
+        fileprivate init(_ base: Dictionary<Item, Int>.Iterator) {
+            self.base = base
+        }
+        
+        public mutating func next() -> Element? {
+            guard let next = base.next() else {
+                return nil
+            }
+            
+            return (next.key, next.value)
+        }
     }
 }
 

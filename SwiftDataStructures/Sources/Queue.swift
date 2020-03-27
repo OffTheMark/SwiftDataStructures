@@ -36,7 +36,7 @@ public struct Queue<Element> {
     // MARK: Removing Elements
     
     public mutating func dequeue() -> Element? {
-        if contents.isEmpty {
+        if isEmpty {
             return nil
         }
         
@@ -50,14 +50,20 @@ public struct Queue<Element> {
 extension Queue: Sequence {
     public typealias Element = Element
     
-    public typealias Iterator = AnyIterator<Element>
+    public __consuming func makeIterator() -> Iterator {
+        return Iterator(contents.makeIterator())
+    }
     
-    public func makeIterator() -> AnyIterator<Element> {
-        var iterator = contents.makeIterator()
+    public struct Iterator: IteratorProtocol {
+        private var base: LinkedList<Element>.Iterator
         
-        return AnyIterator({
-            return iterator.next()
-        })
+        fileprivate init(_ base: LinkedList<Element>.Iterator) {
+            self.base = base
+        }
+        
+        public mutating func next() -> Element? {
+            return base.next()
+        }
     }
 }
 

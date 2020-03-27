@@ -138,7 +138,7 @@ public struct OrderedDictionary<Key: Hashable, Value> {
 extension OrderedDictionary: Sequence {
     public typealias Element = (key: Key, value: Value)
     
-    public func makeIterator() -> Iterator {
+    public __consuming func makeIterator() -> Iterator {
         return Iterator(keysIterator: sortedKeys.makeIterator(), valuesByKey: valuesByKey)
     }
     
