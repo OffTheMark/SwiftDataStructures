@@ -209,9 +209,36 @@ extension OrderedDictionary: BidirectionalCollection {
     }
 }
 
+// MARK: Hashable
+
+extension OrderedDictionary: Hashable where Value: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        var commutativeHash = 0
+        
+        for (key, value) in self {
+            var elementHasher = hasher
+            elementHasher.combine(key)
+            elementHasher.combine(value)
+            commutativeHash ^= elementHasher.finalize()
+        }
+        
+        hasher.combine(commutativeHash)
+    }
+}
+
 // MARK: Equatable
 
-extension OrderedDictionary: Equatable where Value: Equatable {}
+extension OrderedDictionary: Equatable where Value: Equatable {
+    public static func == (lhs: OrderedDictionary<Key, Value>, rhs: OrderedDictionary<Key, Value>) -> Bool {
+        guard lhs.count == rhs.count else {
+            return false
+        }
+        
+        return zip(lhs, rhs).allSatisfy({ leftElement, rightElement in
+            return leftElement == rightElement
+        })
+    }
+}
 
 // MARK: CustomStringConvertible
 
@@ -221,7 +248,7 @@ extension OrderedDictionary: CustomStringConvertible {
             return "[:]"
         }
         
-        let keyValuesPairs: [String] = self.map({ (key, value) in
+        let keyValuesPairs: [String] = self.lazy.map({ (key, value) in
             let reflectionOfKey = String(reflecting: key)
             let reflectionOfValue = String(reflecting: value)
             
