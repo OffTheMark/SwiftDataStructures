@@ -103,10 +103,7 @@
 		81562E39242E35680052CD03 /* SwiftDataStructures */ = {
 			isa = PBXGroup;
 			children = (
-				81562E61242E68F30052CD03 /* Bag */,
-				81562E6A242E69FD0052CD03 /* Deque */,
-				81562E6F242E6A4F0052CD03 /* LinkedList */,
-				81562E51242E35E80052CD03 /* OrderedDictionary */,
+				81562E82242E6BE80052CD03 /* Sources */,
 				81562E3A242E35680052CD03 /* SwiftDataStructures.h */,
 				81562E3B242E35680052CD03 /* Info.plist */,
 			);
@@ -126,29 +123,12 @@
 			path = SwiftDataStructuresTests;
 			sourceTree = "<group>";
 		};
-		81562E51242E35E80052CD03 /* OrderedDictionary */ = {
-			isa = PBXGroup;
-			children = (
-				81562E52242E35F80052CD03 /* OrderedDictionary.swift */,
-				81562E54242E36140052CD03 /* OrderedDictionary+Codable.swift */,
-			);
-			path = OrderedDictionary;
-			sourceTree = "<group>";
-		};
 		81562E60242E68630052CD03 /* OrderedDictionary */ = {
 			isa = PBXGroup;
 			children = (
 				81562E56242E3A650052CD03 /* OrderedDictionaryDecodableJSONTests.swift */,
 			);
 			path = OrderedDictionary;
-			sourceTree = "<group>";
-		};
-		81562E61242E68F30052CD03 /* Bag */ = {
-			isa = PBXGroup;
-			children = (
-				81562E62242E68FC0052CD03 /* Bag.swift */,
-			);
-			path = Bag;
 			sourceTree = "<group>";
 		};
 		81562E65242E69390052CD03 /* Bag */ = {
@@ -158,22 +138,6 @@
 				81562E68242E699C0052CD03 /* BagRemoveTests.swift */,
 			);
 			path = Bag;
-			sourceTree = "<group>";
-		};
-		81562E6A242E69FD0052CD03 /* Deque */ = {
-			isa = PBXGroup;
-			children = (
-				81562E6B242E6A350052CD03 /* Deque.swift */,
-			);
-			path = Deque;
-			sourceTree = "<group>";
-		};
-		81562E6F242E6A4F0052CD03 /* LinkedList */ = {
-			isa = PBXGroup;
-			children = (
-				81562E6D242E6A4C0052CD03 /* LinkedList.swift */,
-			);
-			path = LinkedList;
 			sourceTree = "<group>";
 		};
 		81562E70242E6ABB0052CD03 /* LinkedList */ = {
@@ -196,6 +160,18 @@
 				81562E78242E6B280052CD03 /* DequeGetElementsTests.swift */,
 			);
 			path = Deque;
+			sourceTree = "<group>";
+		};
+		81562E82242E6BE80052CD03 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				81562E62242E68FC0052CD03 /* Bag.swift */,
+				81562E6B242E6A350052CD03 /* Deque.swift */,
+				81562E6D242E6A4C0052CD03 /* LinkedList.swift */,
+				81562E52242E35F80052CD03 /* OrderedDictionary.swift */,
+				81562E54242E36140052CD03 /* OrderedDictionary+Codable.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
