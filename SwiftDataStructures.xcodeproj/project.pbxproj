@@ -16,6 +16,8 @@
 		81562E63242E68FC0052CD03 /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E62242E68FC0052CD03 /* Bag.swift */; };
 		81562E67242E69790052CD03 /* BagAddTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E66242E69790052CD03 /* BagAddTests.swift */; };
 		81562E69242E699C0052CD03 /* BagRemoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E68242E699C0052CD03 /* BagRemoveTests.swift */; };
+		81562E6C242E6A350052CD03 /* Deque.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E6B242E6A350052CD03 /* Deque.swift */; };
+		81562E6E242E6A4C0052CD03 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E6D242E6A4C0052CD03 /* LinkedList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,8 @@
 		81562E62242E68FC0052CD03 /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
 		81562E66242E69790052CD03 /* BagAddTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagAddTests.swift; sourceTree = "<group>"; };
 		81562E68242E699C0052CD03 /* BagRemoveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagRemoveTests.swift; sourceTree = "<group>"; };
+		81562E6B242E6A350052CD03 /* Deque.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
+		81562E6D242E6A4C0052CD03 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				81562E61242E68F30052CD03 /* Bag */,
+				81562E6A242E69FD0052CD03 /* Deque */,
+				81562E6F242E6A4F0052CD03 /* LinkedList */,
 				81562E51242E35E80052CD03 /* OrderedDictionary */,
 				81562E3A242E35680052CD03 /* SwiftDataStructures.h */,
 				81562E3B242E35680052CD03 /* Info.plist */,
@@ -134,6 +140,22 @@
 				81562E68242E699C0052CD03 /* BagRemoveTests.swift */,
 			);
 			path = Bag;
+			sourceTree = "<group>";
+		};
+		81562E6A242E69FD0052CD03 /* Deque */ = {
+			isa = PBXGroup;
+			children = (
+				81562E6B242E6A350052CD03 /* Deque.swift */,
+			);
+			path = Deque;
+			sourceTree = "<group>";
+		};
+		81562E6F242E6A4F0052CD03 /* LinkedList */ = {
+			isa = PBXGroup;
+			children = (
+				81562E6D242E6A4C0052CD03 /* LinkedList.swift */,
+			);
+			path = LinkedList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +270,8 @@
 			files = (
 				81562E55242E36140052CD03 /* OrderedDictionary+Codable.swift in Sources */,
 				81562E63242E68FC0052CD03 /* Bag.swift in Sources */,
+				81562E6E242E6A4C0052CD03 /* LinkedList.swift in Sources */,
+				81562E6C242E6A350052CD03 /* Deque.swift in Sources */,
 				81562E53242E35F80052CD03 /* OrderedDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
