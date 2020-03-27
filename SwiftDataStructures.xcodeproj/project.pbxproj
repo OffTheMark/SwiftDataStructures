@@ -128,8 +128,8 @@
 		81562E60242E68630052CD03 /* OrderedDictionary */ = {
 			isa = PBXGroup;
 			children = (
-				81562E56242E3A650052CD03 /* OrderedDictionaryDecodableJSONTests.swift */,
 				81562E8E242E8B920052CD03 /* OrderedDictionaryUpdateTests.swift */,
+				81562E56242E3A650052CD03 /* OrderedDictionaryDecodableJSONTests.swift */,
 			);
 			path = OrderedDictionary;
 			sourceTree = "<group>";

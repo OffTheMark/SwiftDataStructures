@@ -62,16 +62,6 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
     
     // MARK: Updating Elements in an OrderedDictionary
     
-    func test_EmptyDictionary_AfterRemovingValueForKey_IsStillEmpty() {
-        var elements = OrderedDictionary<String, Int>()
-        XCTAssertTrue(elements.isEmpty)
-     
-        elements["first"] = nil
-        
-        XCTAssertTrue(elements.isEmpty)
-        XCTAssertEqual(elements, [:])
-    }
-    
     func test_DictionaryWithOneElement_AfterUpdatingValueForOnlyKey_ContainsOnlyNewValueForKey() {
         var elements: OrderedDictionary = ["first": 0]
      
@@ -105,5 +95,49 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements[2].key, "third")
         XCTAssertEqual(elements[2].value, 2)
         XCTAssertEqual(elements, ["first": 0, "second": 2, "third": 2])
+    }
+    
+    // MARK: Remove Elements in an Ordered Dictionary
+    
+    func test_EmptyDictionary_AfterRemovingValueForKey_IsStillEmpty() {
+        var elements = OrderedDictionary<String, Int>()
+        XCTAssertTrue(elements.isEmpty)
+     
+        elements["first"] = nil
+        
+        XCTAssertTrue(elements.isEmpty)
+        XCTAssertEqual(elements, [:])
+    }
+    
+    func test_DictionaryWithOneElement_AfterRemovingValueForKey_IsEmpty() {
+        var elements: OrderedDictionary = ["first": 0]
+        
+        elements["first"] = nil
+        
+        XCTAssertTrue(elements.isEmpty)
+        XCTAssertEqual(elements, [:])
+    }
+    
+    func test_DictionaryWithMultipleElements_AfterRemovingValueForKey_ContainsRemainingElements() {
+        var elements: OrderedDictionary = ["first": 0, "second": 1, "third": 2]
+        
+        elements["first"] = nil
+        
+        XCTAssertEqual(elements.count, 2)
+        XCTAssertEqual(elements["second"], 1)
+        XCTAssertEqual(elements["third"], 2)
+    }
+    
+    func test_DictionaryWithMultipleElements_AfterRemovingValueForKey_ContainsElementsInExpectedOrder() {
+        var elements: OrderedDictionary = ["first": 0, "second": 1, "third": 2]
+        
+        elements["first"] = nil
+        
+        XCTAssertEqual(elements.count, 2)
+        XCTAssertEqual(elements[0].key, "second")
+        XCTAssertEqual(elements[0].value, 1)
+        XCTAssertEqual(elements[1].key, "third")
+        XCTAssertEqual(elements[1].value, 2)
+        XCTAssertEqual(elements, ["second": 1, "third": 2])
     }
 }
