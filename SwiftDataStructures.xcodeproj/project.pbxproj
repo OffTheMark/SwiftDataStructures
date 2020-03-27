@@ -10,6 +10,7 @@
 		81562E41242E35690052CD03 /* SwiftDataStructures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81562E37242E35680052CD03 /* SwiftDataStructures.framework */; };
 		81562E46242E35690052CD03 /* SwiftDataStructuresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E45242E35690052CD03 /* SwiftDataStructuresTests.swift */; };
 		81562E48242E35690052CD03 /* SwiftDataStructures.h in Headers */ = {isa = PBXBuildFile; fileRef = 81562E3A242E35680052CD03 /* SwiftDataStructures.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81562E53242E35F80052CD03 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E52242E35F80052CD03 /* OrderedDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		81562E40242E35690052CD03 /* SwiftDataStructuresTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDataStructuresTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81562E45242E35690052CD03 /* SwiftDataStructuresTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataStructuresTests.swift; sourceTree = "<group>"; };
 		81562E47242E35690052CD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81562E52242E35F80052CD03 /* OrderedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		81562E39242E35680052CD03 /* SwiftDataStructures */ = {
 			isa = PBXGroup;
 			children = (
+				81562E51242E35E80052CD03 /* OrderedDictionary */,
 				81562E3A242E35680052CD03 /* SwiftDataStructures.h */,
 				81562E3B242E35680052CD03 /* Info.plist */,
 			);
@@ -84,6 +87,14 @@
 				81562E47242E35690052CD03 /* Info.plist */,
 			);
 			path = SwiftDataStructuresTests;
+			sourceTree = "<group>";
+		};
+		81562E51242E35E80052CD03 /* OrderedDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				81562E52242E35F80052CD03 /* OrderedDictionary.swift */,
+			);
+			path = OrderedDictionary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +159,7 @@
 				TargetAttributes = {
 					81562E36242E35680052CD03 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					81562E3F242E35690052CD03 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -195,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81562E53242E35F80052CD03 /* OrderedDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +353,7 @@
 		81562E4C242E35690052CD03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -357,6 +371,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -365,6 +380,7 @@
 		81562E4D242E35690052CD03 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -390,6 +406,7 @@
 		81562E4F242E35690052CD03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SwiftDataStructuresTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -407,6 +424,7 @@
 		81562E50242E35690052CD03 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SwiftDataStructuresTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
