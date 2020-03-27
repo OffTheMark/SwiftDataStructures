@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		81562E41242E35690052CD03 /* SwiftDataStructures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81562E37242E35680052CD03 /* SwiftDataStructures.framework */; };
-		81562E46242E35690052CD03 /* SwiftDataStructuresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E45242E35690052CD03 /* SwiftDataStructuresTests.swift */; };
 		81562E48242E35690052CD03 /* SwiftDataStructures.h in Headers */ = {isa = PBXBuildFile; fileRef = 81562E3A242E35680052CD03 /* SwiftDataStructures.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		81562E53242E35F80052CD03 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E52242E35F80052CD03 /* OrderedDictionary.swift */; };
 		81562E55242E36140052CD03 /* OrderedDictionary+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E54242E36140052CD03 /* OrderedDictionary+Codable.swift */; };
@@ -45,7 +44,6 @@
 		81562E3A242E35680052CD03 /* SwiftDataStructures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftDataStructures.h; sourceTree = "<group>"; };
 		81562E3B242E35680052CD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81562E40242E35690052CD03 /* SwiftDataStructuresTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDataStructuresTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		81562E45242E35690052CD03 /* SwiftDataStructuresTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataStructuresTests.swift; sourceTree = "<group>"; };
 		81562E47242E35690052CD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81562E52242E35F80052CD03 /* OrderedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		81562E54242E36140052CD03 /* OrderedDictionary+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderedDictionary+Codable.swift"; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 		81562E44242E35690052CD03 /* SwiftDataStructuresTests */ = {
 			isa = PBXGroup;
 			children = (
-				81562E45242E35690052CD03 /* SwiftDataStructuresTests.swift */,
 				81562E65242E69390052CD03 /* Bag */,
 				81562E71242E6AC90052CD03 /* Deque */,
 				81562E70242E6ABB0052CD03 /* LinkedList */,
@@ -304,7 +301,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81562E46242E35690052CD03 /* SwiftDataStructuresTests.swift in Sources */,
 				81562E81242E6B950052CD03 /* LinkedListRangeReplaceTests.swift in Sources */,
 				81562E7F242E6B7B0052CD03 /* LinkedListGetElementsTests.swift in Sources */,
 				81562E67242E69790052CD03 /* BagAddTests.swift in Sources */,
