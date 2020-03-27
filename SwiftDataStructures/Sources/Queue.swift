@@ -24,7 +24,7 @@ public struct Queue<Element> {
     }
     
     public func peek() -> Element? {
-        return contents.first
+        return first
     }
     
     // MARK: Adding Elements

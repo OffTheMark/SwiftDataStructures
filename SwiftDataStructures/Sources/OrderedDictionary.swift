@@ -234,7 +234,9 @@ extension OrderedDictionary: Equatable where Value: Equatable {
             return false
         }
         
-        return zip(lhs, rhs).allSatisfy({ leftElement, rightElement in
+        let elementPairs = zip(lhs, rhs)
+        
+        return elementPairs.allSatisfy({ leftElement, rightElement in
             return leftElement == rightElement
         })
     }

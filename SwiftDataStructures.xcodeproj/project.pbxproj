@@ -29,6 +29,7 @@
 		81562E88242E6E8D0052CD03 /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E87242E6E8D0052CD03 /* TreeNode.swift */; };
 		81562E8B242E85A60052CD03 /* QueueAddRemoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E8A242E85A60052CD03 /* QueueAddRemoveTests.swift */; };
 		81562E8D242E898E0052CD03 /* QueueGetElementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E8C242E898E0052CD03 /* QueueGetElementsTests.swift */; };
+		81562E8F242E8B920052CD03 /* OrderedDictionaryUpdateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E8E242E8B920052CD03 /* OrderedDictionaryUpdateTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		81562E87242E6E8D0052CD03 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 		81562E8A242E85A60052CD03 /* QueueAddRemoveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAddRemoveTests.swift; sourceTree = "<group>"; };
 		81562E8C242E898E0052CD03 /* QueueGetElementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueGetElementsTests.swift; sourceTree = "<group>"; };
+		81562E8E242E8B920052CD03 /* OrderedDictionaryUpdateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionaryUpdateTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				81562E56242E3A650052CD03 /* OrderedDictionaryDecodableJSONTests.swift */,
+				81562E8E242E8B920052CD03 /* OrderedDictionaryUpdateTests.swift */,
 			);
 			path = OrderedDictionary;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				81562E73242E6AD80052CD03 /* DequeAddTests.swift in Sources */,
 				81562E7B242E6B510052CD03 /* LinkedListAddTests.swift in Sources */,
 				81562E57242E3A650052CD03 /* OrderedDictionaryDecodableJSONTests.swift in Sources */,
+				81562E8F242E8B920052CD03 /* OrderedDictionaryUpdateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
