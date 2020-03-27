@@ -111,6 +111,22 @@ extension Queue: Collection {
     }
 }
 
+// MARK: Equatable
+
+extension Queue: Equatable where Element: Equatable {
+    public static func == (lhs: Queue<Element>, rhs: Queue<Element>) -> Bool {
+        guard lhs.count == rhs.count else {
+            return false
+        }
+
+        let elementPairs = zip(lhs, rhs)
+
+        return elementPairs.allSatisfy({ left, right in
+            return left == right
+        })
+    }
+}
+
 // MARK: ExpressibleByArrayLiteral
 
 extension Queue: ExpressibleByArrayLiteral {

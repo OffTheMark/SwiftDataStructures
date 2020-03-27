@@ -27,6 +27,8 @@
 		81562E81242E6B950052CD03 /* LinkedListRangeReplaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E80242E6B950052CD03 /* LinkedListRangeReplaceTests.swift */; };
 		81562E86242E6E800052CD03 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E85242E6E800052CD03 /* Queue.swift */; };
 		81562E88242E6E8D0052CD03 /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E87242E6E8D0052CD03 /* TreeNode.swift */; };
+		81562E8B242E85A60052CD03 /* QueueAddRemoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E8A242E85A60052CD03 /* QueueAddRemoveTests.swift */; };
+		81562E8D242E898E0052CD03 /* QueueGetElementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E8C242E898E0052CD03 /* QueueGetElementsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		81562E80242E6B950052CD03 /* LinkedListRangeReplaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListRangeReplaceTests.swift; sourceTree = "<group>"; };
 		81562E85242E6E800052CD03 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		81562E87242E6E8D0052CD03 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
+		81562E8A242E85A60052CD03 /* QueueAddRemoveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAddRemoveTests.swift; sourceTree = "<group>"; };
+		81562E8C242E898E0052CD03 /* QueueGetElementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueGetElementsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 				81562E71242E6AC90052CD03 /* Deque */,
 				81562E70242E6ABB0052CD03 /* LinkedList */,
 				81562E60242E68630052CD03 /* OrderedDictionary */,
+				81562E89242E858D0052CD03 /* Queue */,
 				81562E47242E35690052CD03 /* Info.plist */,
 			);
 			path = SwiftDataStructuresTests;
@@ -175,6 +180,15 @@
 				81562E87242E6E8D0052CD03 /* TreeNode.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		81562E89242E858D0052CD03 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				81562E8A242E85A60052CD03 /* QueueAddRemoveTests.swift */,
+				81562E8C242E898E0052CD03 /* QueueGetElementsTests.swift */,
+			);
+			path = Queue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,10 +318,12 @@
 				81562E81242E6B950052CD03 /* LinkedListRangeReplaceTests.swift in Sources */,
 				81562E7F242E6B7B0052CD03 /* LinkedListGetElementsTests.swift in Sources */,
 				81562E67242E69790052CD03 /* BagAddTests.swift in Sources */,
+				81562E8B242E85A60052CD03 /* QueueAddRemoveTests.swift in Sources */,
 				81562E79242E6B280052CD03 /* DequeGetElementsTests.swift in Sources */,
 				81562E75242E6AED0052CD03 /* DequeRemoveTests.swift in Sources */,
 				81562E77242E6B110052CD03 /* DequeRotateTests.swift in Sources */,
 				81562E69242E699C0052CD03 /* BagRemoveTests.swift in Sources */,
+				81562E8D242E898E0052CD03 /* QueueGetElementsTests.swift in Sources */,
 				81562E7D242E6B680052CD03 /* LinkedListRemoveTests.swift in Sources */,
 				81562E73242E6AD80052CD03 /* DequeAddTests.swift in Sources */,
 				81562E7B242E6B510052CD03 /* LinkedListAddTests.swift in Sources */,
