@@ -26,6 +26,8 @@
 		81562E7D242E6B680052CD03 /* LinkedListRemoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E7C242E6B680052CD03 /* LinkedListRemoveTests.swift */; };
 		81562E7F242E6B7B0052CD03 /* LinkedListGetElementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E7E242E6B7B0052CD03 /* LinkedListGetElementsTests.swift */; };
 		81562E81242E6B950052CD03 /* LinkedListRangeReplaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E80242E6B950052CD03 /* LinkedListRangeReplaceTests.swift */; };
+		81562E86242E6E800052CD03 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E85242E6E800052CD03 /* Queue.swift */; };
+		81562E88242E6E8D0052CD03 /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E87242E6E8D0052CD03 /* TreeNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		81562E7C242E6B680052CD03 /* LinkedListRemoveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListRemoveTests.swift; sourceTree = "<group>"; };
 		81562E7E242E6B7B0052CD03 /* LinkedListGetElementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListGetElementsTests.swift; sourceTree = "<group>"; };
 		81562E80242E6B950052CD03 /* LinkedListRangeReplaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListRangeReplaceTests.swift; sourceTree = "<group>"; };
+		81562E85242E6E800052CD03 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		81562E87242E6E8D0052CD03 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,8 @@
 				81562E6D242E6A4C0052CD03 /* LinkedList.swift */,
 				81562E52242E35F80052CD03 /* OrderedDictionary.swift */,
 				81562E54242E36140052CD03 /* OrderedDictionary+Codable.swift */,
+				81562E85242E6E800052CD03 /* Queue.swift */,
+				81562E87242E6E8D0052CD03 /* TreeNode.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -284,7 +290,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81562E88242E6E8D0052CD03 /* TreeNode.swift in Sources */,
 				81562E55242E36140052CD03 /* OrderedDictionary+Codable.swift in Sources */,
+				81562E86242E6E800052CD03 /* Queue.swift in Sources */,
 				81562E63242E68FC0052CD03 /* Bag.swift in Sources */,
 				81562E6E242E6A4C0052CD03 /* LinkedList.swift in Sources */,
 				81562E6C242E6A350052CD03 /* Deque.swift in Sources */,
