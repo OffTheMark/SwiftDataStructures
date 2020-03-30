@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		81357EFC242E923100DB91C1 /* BagUpdateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81357EFB242E923100DB91C1 /* BagUpdateTests.swift */; };
+		813ABC6D24325F77006DAD25 /* OrderedDictionaryUpdateIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813ABC6C24325F77006DAD25 /* OrderedDictionaryUpdateIndexTests.swift */; };
 		81562E41242E35690052CD03 /* SwiftDataStructures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81562E37242E35680052CD03 /* SwiftDataStructures.framework */; };
 		81562E48242E35690052CD03 /* SwiftDataStructures.h in Headers */ = {isa = PBXBuildFile; fileRef = 81562E3A242E35680052CD03 /* SwiftDataStructures.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		81562E53242E35F80052CD03 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81562E52242E35F80052CD03 /* OrderedDictionary.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		81357EFB242E923100DB91C1 /* BagUpdateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagUpdateTests.swift; sourceTree = "<group>"; };
+		813ABC6C24325F77006DAD25 /* OrderedDictionaryUpdateIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionaryUpdateIndexTests.swift; sourceTree = "<group>"; };
 		81562E37242E35680052CD03 /* SwiftDataStructures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftDataStructures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81562E3A242E35680052CD03 /* SwiftDataStructures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftDataStructures.h; sourceTree = "<group>"; };
 		81562E3B242E35680052CD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				81562E8E242E8B920052CD03 /* OrderedDictionaryUpdateTests.swift */,
 				81562E56242E3A650052CD03 /* OrderedDictionaryDecodableJSONTests.swift */,
+				813ABC6C24325F77006DAD25 /* OrderedDictionaryUpdateIndexTests.swift */,
 			);
 			path = OrderedDictionary;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				81357EFC242E923100DB91C1 /* BagUpdateTests.swift in Sources */,
 				81562E77242E6B110052CD03 /* DequeRotateTests.swift in Sources */,
 				81562E8D242E898E0052CD03 /* QueueGetElementsTests.swift in Sources */,
+				813ABC6D24325F77006DAD25 /* OrderedDictionaryUpdateIndexTests.swift in Sources */,
 				81562E73242E6AD80052CD03 /* DequeUpdateTests.swift in Sources */,
 				81562E7B242E6B510052CD03 /* LinkedListUpdateTests.swift in Sources */,
 				81562E57242E3A650052CD03 /* OrderedDictionaryDecodableJSONTests.swift in Sources */,
