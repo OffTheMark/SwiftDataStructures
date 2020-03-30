@@ -157,6 +157,45 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         valuesByKey.removeAll(keepingCapacity: keepCapacity)
     }
     
+    // MARK: Transforming a Dictionary
+    
+    /// Returns a new ordered dictionary contains the keys of this dictionary with the values transformed by the given closure.
+    ///
+    /// - Parameter transform: A closure that transforms a value. `transforms` accepts each value of the dictionary as its parameter and returns a transformed value of the same or of a
+    /// different type.
+    ///
+    /// - Returns: A dictionary contains the keys and transformed values of this dictionary, with the keys preserving their order from this dictionary.
+    ///
+    /// Complexity: O(_n_), where _n_ is the length of the dictionary.
+    public func mapValues<T>(_ transform: (Value) throws -> T) rethrows -> OrderedDictionary<Key, T> {
+        let newElements: [(key: Key, value: T)] = try map({ key, value in
+            let newValue = try transform(value)
+            return (key, newValue)
+        })
+        
+        return OrderedDictionary<Key, T>(uniqueKeysWithValues: newElements)
+    }
+    
+    /// Returns a new ordered dictionary containing only the key-value pairs that have non-nil values as the result of transformation by the given closure.
+    ///
+    /// - Parameter transform: A closure that transforms a value. `transforms` accepts each value of the dictionary as its parameter and returns an optional transformed value of the same or of a
+    /// different type.
+    ///
+    /// - Returns: A dictionary contains the keys and non-`nil` transformed values of this dictionary, with the keys preserving their order from this dictionary.
+    ///
+    /// Complexity: O(_n_), where _n_ is the length of the dictionary.
+    public func compactMapValues<T>(_ transform: (Value) throws -> T?) rethrows -> OrderedDictionary<Key, T> {
+        let newElements: [(key: Key, value: T)] = try compactMap({ key, value in
+            guard let newValue = try transform(value) else {
+                return nil
+            }
+            
+            return (key, newValue)
+        })
+        
+        return OrderedDictionary<Key, T>(uniqueKeysWithValues: newElements)
+    }
+    
     // MARK: - OrderedDictionary.Keys
     
     public struct Keys {
