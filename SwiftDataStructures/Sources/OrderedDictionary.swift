@@ -160,6 +160,7 @@ extension OrderedDictionary: Sequence {
 
 extension OrderedDictionary: Collection {
     public typealias Index = Int
+    public typealias Indidces = Range<Int>
     
     // MARK: Manipulating Indices
     
@@ -169,6 +170,10 @@ extension OrderedDictionary: Collection {
     
     public var endIndex: Int {
         return sortedKeys.endIndex
+    }
+    
+    public var indices: Range<Int> {
+        return sortedKeys.indices
     }
     
     public func index(after i: Int) -> Int {
@@ -192,12 +197,23 @@ extension OrderedDictionary: Collection {
     // MARK: Accessing a Collection's Elements
     
     public subscript(position: Int) -> (key: Key, value: Value) {
-        precondition(indices.contains(position), "Index out of range.")
-        
-        let key = sortedKeys[position]
-        let value = valuesByKey[key]!
-        
-        return (key, value)
+        get {
+            precondition(indices.contains(position), "Index out of range.")
+            
+            let key = sortedKeys[position]
+            let value = valuesByKey[key]!
+            
+            return (key, value)
+        }
+        set(newElement) {
+            precondition(indices.contains(position), "Index out of range.")
+            
+            let previousElement = self[position]
+            
+            sortedKeys[position] = newElement.key
+            valuesByKey[previousElement.key] = nil
+            valuesByKey[newElement.key] = newElement.value
+        }
     }
 }
 
@@ -208,6 +224,31 @@ extension OrderedDictionary: BidirectionalCollection {
         return sortedKeys.index(before: i)
     }
 }
+
+// MARK: RangeReplaceableCollection
+
+extension OrderedDictionary: RangeReplaceableCollection {
+    public mutating func replaceSubrange<C: Collection>(_ subrange: Range<Int>, with newElements: __owned C) where Element == C.Element {
+        precondition(subrange.lowerBound >= startIndex, "Subrange bounds are out of range.")
+        precondition(subrange.upperBound <= endIndex, "Subrange bounds are out of range.")
+        
+        for element in self[subrange] {
+            removeValue(forKey: element.key)
+        }
+        
+        var indexToInsert = subrange.startIndex
+        for (key, value) in newElements {
+            sortedKeys.insert(key, at: indexToInsert)
+            valuesByKey[key] = value
+            
+            indexToInsert = sortedKeys.index(after: indexToInsert)
+        }
+    }
+}
+
+// MARK: MutableCollection
+
+extension OrderedDictionary: MutableCollection {}
 
 // MARK: Hashable
 
