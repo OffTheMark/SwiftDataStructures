@@ -10,6 +10,9 @@ import Foundation
 
 // MARK: OrderedDictionary
 
+///
+/// An ordered collection whose elements are key-value pairs, where keys are ordered.
+///
 public struct OrderedDictionary<Key: Hashable, Value> {
     private var sortedKeys = Array<Key>()
     private var valuesByKey = Dictionary<Key, Value>()
@@ -18,11 +21,19 @@ public struct OrderedDictionary<Key: Hashable, Value> {
     
     public init() {}
     
+    /// Creates an empty ordered dictionary with preallocated space for at least the specified number of elements.
+    ///
+    /// - Parameter minimumCapacity: The minimum number of key-value pairs that the newly created dictionary should be able to store without reallocating its storage buffer.
     init(minimumCapacity: Int) {
         self.init()
         self.reserveCapacity(minimumCapacity)
     }
     
+    /// Creates a new ordered dictionary from the key-value pairs in the given sequence.
+    ///
+    /// - Parameter keysAndValues: A sequence of key-value pairs to use for the new dictionary. Every key in `keysAndValues` must be unique.
+    ///
+    /// - Returns: A new dictionary initialized with the elements of `keysAndValues`.
     init<S: Sequence>(uniqueKeysWithValues keysAndValues: S) where S.Element == (Key, Value) {
         if let orderedDictionary = keysAndValues as? OrderedDictionary<Key, Value> {
             self = orderedDictionary
@@ -30,12 +41,18 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         }
         
         for (key, value) in keysAndValues {
+            precondition(containsKey(key) == false, "Sequence of key-value pairs contains duplicate keys.")
             self[key] = value
         }
     }
     
     // MARK: Accessing Keys and Values
     
+    /// Accesses the value associated with the given key for reading and writing.
+    ///
+    /// - Parameter key: The key to find in the dictionary.
+    ///
+    /// - Returns: The value associated with key if key is in the dictionary; otherwise, `nil`.
     public subscript(key: Key) -> Value? {
         get {
             return valuesByKey[key]
@@ -48,8 +65,17 @@ public struct OrderedDictionary<Key: Hashable, Value> {
                 removeValue(forKey: key)
             }
         }
+        _modify {
+            yield &self[key]
+        }
     }
     
+    /// Accesses the value associated with the given key. If the dictionary doesn't contain the given key, access the provided default value as if the key and default value existed in the dictionary.
+    ///
+    /// - Parameter key: The key to find in the dictionary.
+    /// - Parameter defaultValue: The default value to use if `key` doesn't exist in the dictionary.
+    ///
+    /// - Returns: The value associated with key if key is in the dictionary; otherwise, `defaultValue`.
     public subscript(key: Key, default defaultValue: @autoclosure () -> Value) -> Value {
         get {
             return self[key] ?? defaultValue()
@@ -65,7 +91,7 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         }
     }
     
-    public func containsKey(_ key: Key) -> Bool {
+    private func containsKey(_ key: Key) -> Bool {
         return valuesByKey[key] != nil
     }
     
@@ -79,6 +105,14 @@ public struct OrderedDictionary<Key: Hashable, Value> {
     
     // MARK: Adding Keys and Values
     
+    /// Updates the valyes stored in the dictionary for the given key, or adds a new key-value pair if the key does not exist.
+    ///
+    /// - Parameters:
+    ///   - value: The new value to add to the dictionary.
+    ///   - key: If `key` already exists in the dictionary, `value` replaces the existing associated value. If `key` isn’t already a` key` of the dictionary, the (`key`, `value`) pair is appended to
+    ///     the dictionary.
+    ///
+    /// - Returns: The value that was replaced, or `nil` if a new key-value pair was appended.
     @discardableResult
     public mutating func updateValue(_ value: Value, forKey key: Key) -> Value? {
         if let currentValue = valuesByKey[key] {
@@ -99,6 +133,11 @@ public struct OrderedDictionary<Key: Hashable, Value> {
     
     // MARK: Removing Keys and Values
     
+    /// Removes the given key and its associated value from the dictionary.
+    ///
+    /// - Parameter key: The key to remove along with its associated value.
+    ///
+    /// - Returns: The value that was removed, or `nil` if the key was not present in the dictionary.
     @discardableResult
     public mutating func removeValue(forKey key: Key) -> Value? {
         guard let indexOfKey = index(forKey: key) else {
