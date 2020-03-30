@@ -208,11 +208,10 @@ extension OrderedDictionary: Collection {
         set(newElement) {
             precondition(indices.contains(position), "Index out of range.")
             
-            let previousElement = self[position]
-            
-            sortedKeys[position] = newElement.key
-            valuesByKey[previousElement.key] = nil
-            valuesByKey[newElement.key] = newElement.value
+            replaceSubrange(position ..< position + 1, with: [newElement])
+        }
+        _modify {
+            yield &self[position]
         }
     }
 }
