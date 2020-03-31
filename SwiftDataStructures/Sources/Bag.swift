@@ -48,8 +48,16 @@ public struct Bag<Item: Hashable> {
         return contents[item, default: 0]
     }
     
-    public func contains(_ item: Item) -> Bool {
+    public var capacity: Int {
+        return contents.capacity
+    }
+    
+    public func containsItem(_ item: Item) -> Bool {
         return contents[item] != nil
+    }
+    
+    public var items: Items {
+        return Items(bag: self)
     }
 
     public subscript(item: Item) -> Int {
@@ -60,7 +68,7 @@ public struct Bag<Item: Hashable> {
             updateCount(newValue, of: item)
         }
         _modify {
-            if contains(item) == false {
+            if containsItem(item) == false {
                 contents[item] = 0
             }
             
@@ -127,7 +135,15 @@ public struct Bag<Item: Hashable> {
     public mutating func reserveCapacity(_ minimumCapacity: Int) {
         contents.reserveCapacity(minimumCapacity)
     }
+    
+    // MARK: - Items
+    
+    public struct Items {
+        fileprivate var bag: Bag<Item>
+    }
 }
+
+// MARK: - Bag
 
 // MARK: Sequence
 
@@ -234,6 +250,32 @@ extension Bag: ExpressibleByDictionaryLiteral {
 extension Bag: Equatable where Item: Equatable {
     public static func == (lhs: Bag<Item>, rhs: Bag<Item>) -> Bool {
         return lhs.contents == rhs.contents
+    }
+}
+
+// MARK: - Bag.Items
+
+extension Bag.Items: Sequence {
+    public typealias Element = Item
+    
+    public __consuming func makeIterator() -> Bag<Item>.Items.Iterator {
+        return Iterator(bag.makeIterator())
+    }
+    
+    public struct Iterator: IteratorProtocol {
+        fileprivate var base: Bag<Item>.Iterator
+        
+        fileprivate init(_ base: Bag<Item>.Iterator) {
+            self.base = base
+        }
+        
+        public mutating func next() -> Item? {
+            guard let next = base.next() else {
+                return nil
+            }
+            
+            return next.item
+        }
     }
 }
 

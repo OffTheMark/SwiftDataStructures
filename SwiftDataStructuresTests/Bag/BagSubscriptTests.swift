@@ -18,7 +18,7 @@ final class BagSubscriptTests: XCTestCase {
         bag["element"] = 0
         
         XCTAssertEqual(bag["element"], 0)
-        XCTAssertFalse(bag.contains("element"))
+        XCTAssertFalse(bag.containsItem("element"))
     }
     
     func test_EmptyBag_AfterSettingCountOfItemToZero_IsEmpty() {
@@ -36,7 +36,7 @@ final class BagSubscriptTests: XCTestCase {
         bag["element"] = 1
         
         XCTAssertEqual(bag["element"], 1)
-        XCTAssertTrue(bag.contains("element"))
+        XCTAssertTrue(bag.containsItem("element"))
     }
     
     func test_EmptyBag_AfterSettingCountOfItem_ContainsCorrectElements() {
@@ -54,7 +54,7 @@ final class BagSubscriptTests: XCTestCase {
         bag["element"] += 3
         
         XCTAssertEqual(bag["element"], 3)
-        XCTAssertTrue(bag.contains("element"))
+        XCTAssertTrue(bag.containsItem("element"))
     }
     
     func test_EmptyBag_AfterSettingCountOfItemInPlace_ContainsCorrectElements() {
@@ -74,7 +74,7 @@ final class BagSubscriptTests: XCTestCase {
         bag["element"] = 0
         
         XCTAssertEqual(bag["element"], 0)
-        XCTAssertFalse(bag.contains("element"))
+        XCTAssertFalse(bag.containsItem("element"))
     }
     
     func test_BagWithElements_AfterSettingCountOfExistingItemToZero_ContainsCorrectElements() {
@@ -92,7 +92,7 @@ final class BagSubscriptTests: XCTestCase {
         bag["element"] = 5
         
         XCTAssertEqual(bag["element"], 5)
-        XCTAssertTrue(bag.contains("element"))
+        XCTAssertTrue(bag.containsItem("element"))
     }
     
     func test_BagWithElements_AfterSettingCountOfExistingItemToCountOtherThanZero_ContainsCorrectElements() {
@@ -110,7 +110,7 @@ final class BagSubscriptTests: XCTestCase {
         bag["element"] -= 2
         
         XCTAssertEqual(bag["element"], 2)
-        XCTAssertTrue(bag.contains("element"))
+        XCTAssertTrue(bag.containsItem("element"))
     }
     
     func test_BagWithElements_AfterSettingCountOfExistingItemInPlace_ContainsCorrectElements() {
@@ -128,7 +128,7 @@ final class BagSubscriptTests: XCTestCase {
         bag["yetAnotherElement"] = 0
         
         XCTAssertEqual(bag["yetAnotherElement"], 0)
-        XCTAssertFalse(bag.contains("yetAnotherElement"))
+        XCTAssertFalse(bag.containsItem("yetAnotherElement"))
     }
     
     func test_BagWithElements_AfterSettingCountOfNewItemToZero_ContainsCorrectElements() {
@@ -146,7 +146,7 @@ final class BagSubscriptTests: XCTestCase {
         bag["yetAnotherElement"] = 3
         
         XCTAssertEqual(bag["yetAnotherElement"], 3)
-        XCTAssertTrue(bag.contains("yetAnotherElement"))
+        XCTAssertTrue(bag.containsItem("yetAnotherElement"))
     }
     
     func test_BagWithElements_AfterSettingCountOfNewItemToCountOtherThanZero_ContainsCorrectElements() {
@@ -164,7 +164,7 @@ final class BagSubscriptTests: XCTestCase {
         bag["yetAnotherElement"] += 6
         
         XCTAssertEqual(bag["yetAnotherElement"], 6)
-        XCTAssertTrue(bag.contains("yetAnotherElement"))
+        XCTAssertTrue(bag.containsItem("yetAnotherElement"))
     }
     
     func test_BagWithElements_AfterSettingCountOfNewItemInPlace_ContainsCorrectElements() {
