@@ -39,16 +39,28 @@ public struct Bag<Item: Hashable> {
         })
     }
 
-    public func count(of element: Item) -> Int {
-        return self[element, default: 0]
+    public func count(of item: Item) -> Int {
+        return contents[item, default: 0]
+    }
+    
+    public func contains(_ item: Item) -> Bool {
+        return contents[item] != nil
     }
 
-    public subscript(item: Item) -> Int? {
-        return contents[item]
-    }
-
-    public subscript(item: Item, default defaultValue: @autoclosure () -> Int) -> Int {
-        return contents[item, default: defaultValue()]
+    public subscript(item: Item) -> Int {
+        get {
+            return count(of: item)
+        }
+        set {
+            updateCount(newValue, of: item)
+        }
+        _modify {
+            if contains(item) == false {
+                contents[item] = 0
+            }
+            
+            yield &contents[item]!
+        }
     }
 
     // MARK: Adding Elements
@@ -92,6 +104,15 @@ public struct Bag<Item: Hashable> {
         }
         
         return (item, removed)
+    }
+    
+    public mutating func updateCount(_ count: Int, of item: Item) {
+        if count == 0 {
+            removeAll(of: item)
+            return
+        }
+        
+        contents[item] = count
     }
 
     public mutating func removeAll() {
