@@ -10,6 +10,12 @@ import Foundation
 
 // MARK: Bag
 
+///
+/// A collection whose elements are item-count pairs.
+///
+/// A bag is a type of hash table, providing fast access to the entries it contains. Each entry in the table is identified using its item, which is a hashable type such as a string or number. You use that item to
+/// retrieve the corresponding count, which is an integer.
+///
 public struct Bag<Item: Hashable> {
     // MARK: Properties
 
@@ -116,12 +122,15 @@ public struct Bag<Item: Hashable> {
 
     // MARK: Adding Elements
     
-    /// Adds a new of `item`s to the bag equal to `count`.
+    /// Adds a number of `item`s to the bag equal to `count`.
+    ///
     /// - Parameters:
     ///   - item: The item to add to the bag.
-    ///   - count: The number of items to add.`count` must be greather than 0.
+    ///   - count: The count to associate with `item`. `count` must be greather than 0.
     ///
-    /// If at least one `item` was already stored in the bag, the count is simply
+    /// - Postcondition:
+    ///     - If `item` already exists in the bag, the count is simply the sum of the previous count for the given item and `count`.
+    ///     - If `item` does not exist in the bag, a new item-count pair is added.
     public mutating func add(_ item: Item, count: Int = 1) {
         precondition(count > 0, "Count must be greater than 0.")
 
@@ -133,7 +142,7 @@ public struct Bag<Item: Hashable> {
     /// Removes `count` of the given `item`.
     ///
     /// - Parameter item: The item to remove.
-    /// - Parameter count: The number of the given item to remove. `count` must be greater than 0.
+    /// - Parameter count: The associated count of item to remove. `count` must be greater than 0.
     ///
     /// - Returns: The item and the number of items that were actually removed if the bag did contain the given item; otherwise `nil`.
     ///
