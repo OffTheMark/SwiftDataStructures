@@ -18,6 +18,11 @@ public struct Bag<Item: Hashable> {
     // MARK: Creating a Bag
 
     public init() {}
+    
+    public init(minimumCapacity: Int) {
+        self.init()
+        self.reserveCapacity(minimumCapacity)
+    }
 
     public init<S: Sequence>(_ sequence: S) where S.Iterator.Element == Item {
         for element in sequence {
@@ -115,8 +120,12 @@ public struct Bag<Item: Hashable> {
         contents[item] = count
     }
 
-    public mutating func removeAll() {
-        contents.removeAll()
+    public mutating func removeAll(keepingCapacity keepCapacity: Bool = false) {
+        contents.removeAll(keepingCapacity: keepCapacity)
+    }
+    
+    public mutating func reserveCapacity(_ minimumCapacity: Int) {
+        contents.reserveCapacity(minimumCapacity)
     }
 }
 
