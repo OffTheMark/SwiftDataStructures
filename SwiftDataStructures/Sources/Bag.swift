@@ -60,6 +60,11 @@ public struct Bag<Item: Hashable> {
         return Items(bag: self)
     }
 
+    /// Access the count associated with the given item.
+    ///
+    /// - Parameter item: The item to find in the bag.
+    ///
+    /// - Returns: The count associated with the item if the item is in the bag; otherwise 0.
     public subscript(item: Item) -> Int {
         get {
             return count(of: item)
@@ -77,39 +82,55 @@ public struct Bag<Item: Hashable> {
     }
 
     // MARK: Adding Elements
-
+    
+    /// Adds a new of `item`s to the bag equal to `count`.
+    /// - Parameters:
+    ///   - item: The item to add to the bag.
+    ///   - count: The number of items to add.`count` must be greather than 0.
+    ///
+    /// If at least one `item` was already stored in the bag, the count is simply
     public mutating func add(_ item: Item, count: Int = 1) {
-        precondition(count > 0, "Count must be positive.")
+        precondition(count > 0, "Count must be greater than 0.")
 
-        contents[item, default: 0] += count
+        self[item] += count
     }
 
     // MARK: Removing Elements
 
     /// Removes `count` of the given `item`.
     ///
-    /// - Parameter item: Item to remove.
-    /// - Parameter count: Number of the given item to remove.
+    /// - Parameter item: The item to remove.
+    /// - Parameter count: The number of the given item to remove. `count` must be greater than 0.
     ///
-    /// - Returns: The number of items that were actually removed, or `nil` if the bag did non contain the given `item`.
+    /// - Returns: The item and the number of items that were actually removed if the bag did contain the given item; otherwise `nil`.
     ///
-    /// If the bag contains
+    /// - Postcondition:
+    ///     - If the bag contained more of the given item than `count`, the count of the given item becomes the subtraction of the previous count for that item and `count`
+    ///     - If the bag contained as many or less of the given item than `count`, all of the given item are removed.
+    ///     - If the bag did not contain the given item, the bag is unchanged.
     @discardableResult
     public mutating func remove(_ item: Item, count: Int = 1) -> Element? {
         precondition(count > 0, "Count must be positive.")
 
-        guard let currentCount = contents[item] else {
+        guard containsItem(item) else {
             return nil
         }
-
+        
+        let currentCount = self.count(of: item)
         if currentCount <= count, let removed = removeAll(of: item) {
             return removed
         }
 
-        contents[item] = currentCount - count
+        self[item] -= count
+        
         return (item, count)
     }
-
+    
+    /// Removes the given item and its associated count from the bag.
+    ///
+    /// - Parameter item: The item to remove along with its count.
+    ///
+    /// - Returns: The number of this item that the bag contained if the bag did contain the given item; otherwise `nil`.
     @discardableResult
     public mutating func removeAll(of item: Item) -> Element? {
         guard let removed = contents.removeValue(forKey: item) else {
@@ -119,25 +140,55 @@ public struct Bag<Item: Hashable> {
         return (item, removed)
     }
     
-    public mutating func updateCount(_ count: Int, of item: Item) {
+    /// Updates the count stored in the bag for the given item, or adds a new item-count pair if the bag does not contain the item.
+    ///
+    /// - Parameters:
+    ///   - count: The count of the given item to add to the bag.
+    ///   - item: The item to associate with `count`.
+    ///
+    /// - Returns: The count of the given item that were replaced, or `nil` if the item didn't already exist in the dictionary.
+    ///
+    /// - Postcondition:
+    ///     - If `item` already exists in the bag, `count` replaces the previous count.
+    ///     - If `item` doesn't already exist in the dictionary, the (`item`, `count`) pair is added.
+    ///     - If `item` already exists in the bag and `count` is equal to `0`, all of the given item are removed from the bag.
+    @discardableResult
+    public mutating func updateCount(_ count: Int, of item: Item) -> Int? {
+        precondition(count >= 0, "Count must be greater than or equal to 0.")
+        
         if count == 0 {
-            removeAll(of: item)
-            return
+            return contents.removeValue(forKey: item)
         }
         
-        contents[item] = count
+        return contents.updateValue(count, forKey: item)
     }
-
+    
+    /// Removes all items from the bag.
+    ///
+    /// - Parameter keepCapacity: Whether the bag should keep its underlying buffer. If you pass true, the operation preserves the buffer capacity that the collection has, otherwise the underlying buffer is released. The default is false.
+    ///
+    /// Calling this method invalidates all indices with respect to the dictionary.
+    ///
+    /// Complexity: O(_n_), where _n_ is the number of item-count pairs in the bag.
     public mutating func removeAll(keepingCapacity keepCapacity: Bool = false) {
         contents.removeAll(keepingCapacity: keepCapacity)
     }
     
+    /// Reserves enough space to store the specified number of item-count pairs.
+    ///
+    /// - Parameter minimumCapacity: The requested number of item-count pairs to store.
+    ///
+    /// If you are adding a known number of item-count pairs to a bag, use this method to avoid multiple reallocations. This method ensures that the bag has unique, mutable, contiguous storage, with space
+    /// allocated for at least the requested number of item-count pairs.
     public mutating func reserveCapacity(_ minimumCapacity: Int) {
         contents.reserveCapacity(minimumCapacity)
     }
     
     // MARK: - Items
     
+    ///
+    /// A view of a bag's items.
+    ///
     public struct Items {
         fileprivate var bag: Bag<Item>
     }
