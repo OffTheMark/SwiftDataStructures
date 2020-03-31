@@ -13,7 +13,7 @@ import Foundation
 public struct Bag<Item: Hashable> {
     // MARK: Properties
 
-    private var contents: [Item: Int] = [:]
+    private var contents = Dictionary<Item, Int>()
 
     // MARK: Creating a Bag
 
@@ -32,9 +32,11 @@ public struct Bag<Item: Hashable> {
     }
 
     // MARK: Inspecting a Bag
-
-    public var uniqueCount: Int {
-        return contents.count
+    
+    public var totalCount: Int {
+        return contents.values.reduce(into: 0, { result, count in
+            result += count
+        })
     }
 
     public func count(of element: Item) -> Int {
@@ -143,9 +145,7 @@ extension Bag: Collection {
     // MARK: Instance Properties
 
     public var count: Int {
-        return contents.values.reduce(0, { result, currentCount in
-            return result + currentCount
-        })
+        return contents.count
     }
 
     var first: Self.Element? {
