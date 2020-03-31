@@ -69,22 +69,24 @@ public struct Bag<Item: Hashable> {
     /// - Returns: The number of items that were actually removed, or `nil` if the bag did non contain the given `item`.
     ///
     /// If the bag contains
-    @discardableResult public mutating func remove(_ item: Item, count: Int = 1) -> Element? {
+    @discardableResult
+    public mutating func remove(_ item: Item, count: Int = 1) -> Element? {
         precondition(count > 0, "Count must be positive.")
 
         guard let currentCount = contents[item] else {
             return nil
         }
 
-        if currentCount <= count, let removed = contents.removeValue(forKey: item) {
-            return (item, removed)
+        if currentCount <= count, let removed = removeAll(of: item) {
+            return removed
         }
 
         contents[item] = currentCount - count
         return (item, count)
     }
 
-    @discardableResult public mutating func removeAll(of item: Item) -> Element? {
+    @discardableResult
+    public mutating func removeAll(of item: Item) -> Element? {
         guard let removed = contents.removeValue(forKey: item) else {
             return nil
         }
