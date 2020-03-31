@@ -91,7 +91,7 @@ public struct Bag<Item: Hashable> {
             return count(of: item)
         }
         set {
-            updateCount(newValue, of: item)
+            updateCount(newValue, ofItem: item)
         }
         _modify {
             if containsItem(item) == false {
@@ -174,7 +174,7 @@ public struct Bag<Item: Hashable> {
     ///     - If `item` doesn't already exist in the dictionary, the (`item`, `count`) pair is added.
     ///     - If `item` already exists in the bag and `count` is equal to `0`, all of the given item are removed from the bag.
     @discardableResult
-    public mutating func updateCount(_ count: Int, of item: Item) -> Int? {
+    public mutating func updateCount(_ count: Int, ofItem item: Item) -> Int? {
         precondition(count >= 0, "Count must be greater than or equal to 0.")
         
         if count == 0 {
