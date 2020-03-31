@@ -217,13 +217,13 @@ public struct BagIndex<Element: Hashable> {
     }
 }
 
+// MARK: Equatable
+
+extension BagIndex: Equatable {}
+
 // MARK: Comparable
 
 extension BagIndex: Comparable {
-    public static func == (lhs: BagIndex, rhs: BagIndex) -> Bool {
-        return lhs.index == rhs.index
-    }
-
     public static func <= (lhs: BagIndex, rhs: BagIndex) -> Bool {
         return lhs.index <= rhs.index
     }
