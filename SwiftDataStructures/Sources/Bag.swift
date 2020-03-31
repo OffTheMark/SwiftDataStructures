@@ -19,20 +19,41 @@ public struct Bag<Item: Hashable> {
 
     public init() {}
     
+    /// Creates an empty bag with preallocated space for at least the specified number of elements.
+    ///
+    /// - Parameter minimumCapacity: The minimum number of item-count pairs that the newly created bag should be able to store without reallocating its storage buffer.
+    ///
+    /// Use this initializer to avoid intermediate reallocations of a bag's storage buffer when you know how many item-count pairs you are adding to a bag after creation.
     public init(minimumCapacity: Int) {
         self.init()
         self.reserveCapacity(minimumCapacity)
     }
-
-    public init<S: Sequence>(_ sequence: S) where S.Iterator.Element == Item {
+    
+    /// Creates a new bag from the items in the given sequence.
+    ///
+    /// - Parameter sequence: A sequence of items to use for the new bag.
+    ///
+    /// - Returns: A new bag initialized with the elements of `sequence`.
+    public init<S: Sequence>(_ sequence: S) where S.Element == Item {
         for element in sequence {
             add(element)
         }
     }
-
-    public init<S: Sequence>(_ sequence: S) where S.Iterator.Element == (key: Item, value: Int) {
-        for (element, count) in sequence {
-            add(element, count: count)
+    
+    /// Creates a new bag from the item-count pairs in the given sequence.
+    ///
+    /// - Parameter itemsAndCounts: A sequence of item-count pairs to use for the new bag. Every item in `itemsAndCounts` must be unique.
+    ///
+    /// - Returns: A new bag initialized with the elements of `itemsAndCounts`.
+    public init<S: Sequence>(uniqueItemsWithCounts itemsAndCounts: S) where S.Iterator.Element == (key: Item, value: Int) {
+        if let bag = itemsAndCounts as? Bag<Item> {
+            self = bag
+            return
+        }
+        
+        for (item, count) in itemsAndCounts {
+            precondition(containsItem(item) == false, "Sequence of item-count pairs contains duplicate items.")
+            add(item, count: count)
         }
     }
 
@@ -292,7 +313,8 @@ extension Bag: ExpressibleByDictionaryLiteral {
         let pairs = elements.map({ (key, value) in
             return (key: key, value: value)
         })
-        self.init(pairs)
+        
+        self.init(uniqueItemsWithCounts: pairs)
     }
 }
 
