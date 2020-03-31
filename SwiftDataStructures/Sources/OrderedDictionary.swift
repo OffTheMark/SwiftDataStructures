@@ -105,23 +105,25 @@ public struct OrderedDictionary<Key: Hashable, Value> {
     
     // MARK: Adding Keys and Values
     
-    /// Updates the valyes stored in the dictionary for the given key, or adds a new key-value pair if the key does not exist.
+    /// Updates the values stored in the dictionary for the given key, or adds a new key-value pair if the key does not exist.
     ///
     /// - Parameters:
     ///   - value: The new value to add to the dictionary.
-    ///   - key: If `key` already exists in the dictionary, `value` replaces the existing associated value. If `key` isn’t already a` key` of the dictionary, the (`key`, `value`) pair is appended to
+    ///   - key: The key to associate with `value`. If `key` already exists in the dictionary, `value` replaces the existing associated value. If `key` isn’t already a` key` of the dictionary, the (`key`, `value`) pair is appended to
     ///     the dictionary.
     ///
     /// - Returns: The value that was replaced, or `nil` if a new key-value pair was appended.
     @discardableResult
     public mutating func updateValue(_ value: Value, forKey key: Key) -> Value? {
+        defer {
+            valuesByKey.updateValue(value, forKey: key)
+        }
+        
         if let currentValue = valuesByKey[key] {
-            valuesByKey[key] = value
             return currentValue
         }
         else {
             sortedKeys.append(key)
-            valuesByKey[key] = value
             return nil
         }
     }
