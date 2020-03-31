@@ -17,6 +17,7 @@ public struct Bag<Item: Hashable> {
 
     // MARK: Creating a Bag
 
+    /// Creates an empty bag.
     public init() {}
     
     /// Creates an empty bag with preallocated space for at least the specified number of elements.
@@ -64,19 +65,30 @@ public struct Bag<Item: Hashable> {
             result += count
         })
     }
-
+    
+    /// Returns the count associated with the given item.
+    ///
+    /// - Parameter item: The item to find in the bag.
+    ///
+    /// - Returns: The count associated with the item if the item is in the bag; otherwise 0.
     public func count(of item: Item) -> Int {
         return contents[item, default: 0]
     }
     
+    /// The total number of item-count pairs that the bag can contain without allocating new storage.
     public var capacity: Int {
         return contents.capacity
     }
     
+    /// Returns a Boolean value indicating if the bag contains at least one of the given item.
+    ///
+    /// - Parameter item: The item to find in the bag.
+
     public func containsItem(_ item: Item) -> Bool {
         return contents[item] != nil
     }
     
+    /// A collection containing just the items of the bag.
     public var items: Items {
         return Items(bag: self)
     }
@@ -268,7 +280,7 @@ extension Bag: Collection {
         return contents.count
     }
 
-    var first: Self.Element? {
+    var first: Element? {
         let dictionaryElement = contents.first
 
         return dictionaryElement.map({ key, value in
@@ -282,7 +294,7 @@ extension Bag: Collection {
 
     // MARK: Accessing a Collection's Elements
 
-    public subscript(position: Index) -> Self.Element {
+    public subscript(position: Index) -> Element {
         precondition(indices.contains(position), "Index is out of bounds")
 
         let dictionaryElement = contents[position.index]
