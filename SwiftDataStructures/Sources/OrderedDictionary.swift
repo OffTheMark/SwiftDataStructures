@@ -95,11 +95,41 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         return valuesByKey[key] != nil
     }
     
-    public var keys: Keys {
+    /// A collection containing just the keys of the ordered dictionary.
+    ///
+    /// When iterated over, keys appear in this collection in the same order as they occur in the ordered dictionary’s key-value pairs. Each key in the keys collection has a unique value.
+    /// ```
+    /// let countryCodes: OrderedDictionary = ["BR": "Brazil", "GH": "Ghana", "JP": "Japan"]
+    /// print(countryCodes)
+    /// // Prints "["BR": "Brazil", "GH": "Ghana", "JP": "Japan"]"
+    ///
+    /// for key in countryCodes.keys {
+    ///    print(key)
+    /// }
+    /// // Prints "BR"
+    /// // Prints "GH"
+    /// // Prints "JP"
+    /// ```
+    public var keys: OrderedDictionary<Key, Value>.Keys {
         return Keys(dictionary: self)
     }
     
-    public var values: Values {
+    /// A collection containing just the values of the ordered dictionary.
+    ///
+    /// When iterated over, values appear in this collection in the same order as they occur in the ordered dictionary’s key-value pairs.
+    /// ```
+    /// let countryCodes: OrderedDictionary = ["BR": "Brazil", "GH": "Ghana", "JP": "Japan"]
+    /// print(countryCodes)
+    /// // Prints "["BR": "Brazil", "GH": "Ghana", "JP": "Japan"]"
+    ///
+    /// for value in countryCodes.values {
+    ///    print(value)
+    /// }
+    /// // Prints "Brazil"
+    /// // Prints "Ghana"
+    /// // Prints "Japan"
+    /// ```
+    public var values: OrderedDictionary<Key, Value>.Values {
         return Values(dictionary: self)
     }
     
@@ -128,6 +158,12 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         }
     }
     
+    /// Reserves enough space to store the specified number of key-value pairs.
+    ///
+    /// - Parameter minimumCapacity: The requested number of key-value pairs to store.
+    ///
+    /// If you are adding a known number of key-value pairs to an ordered dictionary, use this method to avoid multiple reallocations. This method ensures that the ordered dictionary has unique, mutable,
+    /// contiguous storage, with space allocated for at least the requested number of key-value pairs.
     public mutating func reserveCapacity(_ minimumCapacity: Int) {
         sortedKeys.reserveCapacity(minimumCapacity)
         valuesByKey.reserveCapacity(minimumCapacity)
@@ -154,6 +190,14 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         return currentValue
     }
     
+    /// Removes all key-value pairs from the ordered dictionary.
+    ///
+    /// - Parameter keepCapacity: Pass _true_ to request that the collection avoid releasing its storage. Retaining the collection’s storage can be a useful optimization when you’re planning to grow
+    ///     the collection again. The default value is false.
+    ///
+    /// Calling this method may invalidate any existing indices for use with this collection.
+    ///
+    /// Complexity: O(_n_), where _n_ is the length of the collection.
     public mutating func removeAll(keepingCapacity keepCapacity: Bool = false) {
         sortedKeys.removeAll(keepingCapacity: keepCapacity)
         valuesByKey.removeAll(keepingCapacity: keepCapacity)
@@ -200,12 +244,18 @@ public struct OrderedDictionary<Key: Hashable, Value> {
     
     // MARK: - OrderedDictionary.Keys
     
+    ///
+    /// A view of an ordered dictionary’s keys.
+    ///
     public struct Keys {
         fileprivate var dictionary: OrderedDictionary<Key, Value>
     }
     
     // MARK: - OrderedDictionary.Values
     
+    ///
+    /// A view of an ordered dictionary’s values.
+    ///
     public struct Values {
         fileprivate var dictionary: OrderedDictionary<Key, Value>
     }
