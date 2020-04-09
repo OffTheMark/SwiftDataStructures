@@ -89,7 +89,6 @@ public struct Bag<Item: Hashable> {
     /// Returns a Boolean value indicating if the bag contains at least one of the given item.
     ///
     /// - Parameter item: The item to find in the bag.
-
     public func containsItem(_ item: Item) -> Bool {
         return contents[item] != nil
     }
@@ -159,12 +158,12 @@ public struct Bag<Item: Hashable> {
         }
         
         let currentCount = self.count(of: item)
-        if currentCount <= count, let removed = removeAll(of: item) {
-            return removed
+        if count >= currentCount {
+            contents.removeValue(forKey: item)
+            return (item, currentCount)
         }
-
-        self[item] -= count
         
+        contents.updateValue(currentCount - count, forKey: item)
         return (item, count)
     }
     
