@@ -37,6 +37,7 @@ public struct Queue<Element> {
     
     // MARK: Removing Elements
     
+    @discardableResult
     public mutating func dequeue() -> Element {
         return contents.removeFirst()
     }
@@ -105,6 +106,18 @@ extension Queue: Collection {
 
     public var isEmpty: Bool {
         return contents.isEmpty
+    }
+}
+
+// MARK: BidirectionalCollection
+
+extension Queue: BidirectionalCollection {
+    public var last: Element? {
+        return contents.last
+    }
+
+    public func index(before i: Int) -> Int {
+        return contents.index(before: i)
     }
 }
 

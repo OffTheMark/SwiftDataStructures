@@ -113,6 +113,18 @@ extension Stack: Collection {
     }
 }
 
+// MARK: BidirectionalCollection
+
+extension Stack: BidirectionalCollection {
+    public var last: Element? {
+        return contents.last
+    }
+
+    public func index(before i: Int) -> Int {
+        return contents.index(before: i)
+    }
+}
+
 // MARK: ExpressibleByArrayLiteral
 
 extension Stack: ExpressibleByArrayLiteral {
