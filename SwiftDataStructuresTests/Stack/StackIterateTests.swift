@@ -9,7 +9,7 @@
 import XCTest
 @testable import SwiftDataStructures
 
-class StackIterateTests: XCTestCase {
+final class StackIterateTests: XCTestCase {
     // MARK: Iterating Over a Stack's Elements
 
     func test_EmptyStack_WhenIteratingOverElements_ReturnsNoElements() {
