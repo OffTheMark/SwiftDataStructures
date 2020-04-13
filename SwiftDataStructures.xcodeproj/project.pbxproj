@@ -31,6 +31,8 @@
 		8156F122243FB1030053C775 /* OrderedDictionaryIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8156F121243FB1030053C775 /* OrderedDictionaryIterateTests.swift */; };
 		8156F12424448BF50053C775 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8156F12324448BF50053C775 /* Stack.swift */; };
 		8156F12624448F570053C775 /* OrderedDictionaryMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8156F12524448F570053C775 /* OrderedDictionaryMapTests.swift */; };
+		81D7ECBE2444EF9400FF98FE /* StackUpdateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECBD2444EF9400FF98FE /* StackUpdateTests.swift */; };
+		81D7ECC02444F22200FF98FE /* StackGetElementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECBF2444F22200FF98FE /* StackGetElementsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		8156F121243FB1030053C775 /* OrderedDictionaryIterateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionaryIterateTests.swift; sourceTree = "<group>"; };
 		8156F12324448BF50053C775 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		8156F12524448F570053C775 /* OrderedDictionaryMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionaryMapTests.swift; sourceTree = "<group>"; };
+		81D7ECBD2444EF9400FF98FE /* StackUpdateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackUpdateTests.swift; sourceTree = "<group>"; };
+		81D7ECBF2444F22200FF98FE /* StackGetElementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackGetElementsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				81562E70242E6ABB0052CD03 /* LinkedList */,
 				81562E60242E68630052CD03 /* OrderedDictionary */,
 				81562E89242E858D0052CD03 /* Queue */,
+				81D7ECBC2444EF6D00FF98FE /* Stack */,
 				81562E47242E35690052CD03 /* Info.plist */,
 			);
 			path = SwiftDataStructuresTests;
@@ -195,6 +200,15 @@
 				81562E8C242E898E0052CD03 /* QueueGetElementsTests.swift */,
 			);
 			path = Queue;
+			sourceTree = "<group>";
+		};
+		81D7ECBC2444EF6D00FF98FE /* Stack */ = {
+			isa = PBXGroup;
+			children = (
+				81D7ECBD2444EF9400FF98FE /* StackUpdateTests.swift */,
+				81D7ECBF2444F22200FF98FE /* StackGetElementsTests.swift */,
+			);
+			path = Stack;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,11 +343,13 @@
 				81357EFC242E923100DB91C1 /* BagUpdateTests.swift in Sources */,
 				81562E77242E6B110052CD03 /* DequeRotateTests.swift in Sources */,
 				813ABC71243373B4006DAD25 /* BagSubscriptTests.swift in Sources */,
+				81D7ECC02444F22200FF98FE /* StackGetElementsTests.swift in Sources */,
 				8156F122243FB1030053C775 /* OrderedDictionaryIterateTests.swift in Sources */,
 				81562E8D242E898E0052CD03 /* QueueGetElementsTests.swift in Sources */,
 				8156F12624448F570053C775 /* OrderedDictionaryMapTests.swift in Sources */,
 				813ABC6D24325F77006DAD25 /* OrderedDictionaryUpdateIndexTests.swift in Sources */,
 				81562E73242E6AD80052CD03 /* DequeUpdateTests.swift in Sources */,
+				81D7ECBE2444EF9400FF98FE /* StackUpdateTests.swift in Sources */,
 				81562E7B242E6B510052CD03 /* LinkedListUpdateTests.swift in Sources */,
 				81562E8F242E8B920052CD03 /* OrderedDictionaryUpdateTests.swift in Sources */,
 			);
