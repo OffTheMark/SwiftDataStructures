@@ -23,11 +23,22 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements, ["first": 0])
     }
     
-    func test_EmptyDictionary_AfterSubscriptingElementWithDefaultForNewKey_CallsDefaultValueAndContainsOnlyValueForKey() {
+    func test_EmptyDictionary_AfterSubscriptingElementWithDefaultForNewKey_CallsDefaultValue() {
         var elements = OrderedDictionary<String, Int>()
         XCTAssertTrue(elements.isEmpty)
+        let spy = DefaultValueSpy(value: 1)
         
-        elements["first", default: 1] += 2
+        elements["first", default: spy.defaultValue()] += 2
+        
+        XCTAssertEqual(spy.numberOfTimesCalled, 1)
+    }
+    
+    func test_EmptyDictionary_AfterSubscriptingElementWithDefaultForNewKey_ContainsOnlyValueForKey() {
+        var elements = OrderedDictionary<String, Int>()
+        XCTAssertTrue(elements.isEmpty)
+        let spy = DefaultValueSpy(value: 1)
+        
+        elements["first", default: spy.defaultValue()] += 2
         
         XCTAssertEqual(elements.count, 1)
         XCTAssertEqual(elements["first"], 3)
@@ -45,10 +56,20 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements, ["first": 0, "second": 1])
     }
     
-    func test_DictionaryWithOneElement_AfterSubscriptingElementWithDefaultForNewKey_CallsDefaultValueAndContainsExistingElementFollowedByNewElement() {
+    func test_DictionaryWithOneElement_AfterSubscriptingElementWithDefaultForNewKey_CallsDefaultValue() {
         var elements: OrderedDictionary = ["first": 0]
+        let spy = DefaultValueSpy(value: -1)
         
-        elements["second", default: -1] += 2
+        elements["second", default: spy.defaultValue()] += 2
+        
+        XCTAssertEqual(spy.numberOfTimesCalled, 1)
+    }
+    
+    func test_DictionaryWithOneElement_AfterSubscriptingElementWithDefaultForNewKey_ContainsExistingElementFollowedByNewElement() {
+        var elements: OrderedDictionary = ["first": 0]
+        let spy = DefaultValueSpy(value: -1)
+        
+        elements["second", default: spy.defaultValue()] += 2
         
         XCTAssertEqual(elements.count, 2)
         XCTAssertEqual(elements["first"], 0)
@@ -82,10 +103,20 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements, ["first": 0, "second": 1, "third": 2])
     }
     
-    func test_DictionaryWithElements_AfterSubscriptingElementWithDefaultForNewKey_CallsDefaultValueAndExistingKeyValuePairFollowedByNewKeyAndValue() {
+    func test_DictionaryWithElements_AfterSubscriptingElementWithDefaultForNewKey_CallsDefaultValue() {
         var elements: OrderedDictionary = ["first": 0, "second": 1]
+        let spy = DefaultValueSpy(value: 1)
         
-        elements["third", default: 1] += 1
+        elements["third", default: spy.defaultValue()] += 1
+        
+        XCTAssertEqual(spy.numberOfTimesCalled, 1)
+    }
+    
+    func test_DictionaryWithElements_AfterSubscriptingElementWithDefaultForNewKey_ExistingKeyValuePairFollowedByNewKeyAndValue() {
+        var elements: OrderedDictionary = ["first": 0, "second": 1]
+        let spy = DefaultValueSpy(value: 1)
+        
+        elements["third", default: spy.defaultValue()] += 1
         
         XCTAssertEqual(elements.count, 3)
         XCTAssertEqual(elements["first"], 0)
@@ -95,8 +126,9 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
     
     func test_DictionaryWithElements_AfterSubscriptingElementWithDefaultForNewKey_ContainsExistingElementsFollowedByNewElement() {
         var elements: OrderedDictionary = ["first": 0, "second": 1]
+        let spy = DefaultValueSpy(value: 1)
         
-        elements["third", default: 1] += 1
+        elements["third", default: spy.defaultValue()] += 1
         
         XCTAssertEqual(elements.count, 3)
         XCTAssertEqual(elements[0].key, "first")
@@ -119,15 +151,24 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements, ["first": 1])
     }
     
-    func test_DictionaryWithOneElement_AfterSubscritingWithDefaultForOnlyKey_DefaultValueIsNotCalledAndContainsNewValueForKey() {
+    func test_DictionaryWithOneElement_AfterSubscritingWithDefaultForOnlyKey_DefaultValueIsNotCalled() {
         var elements: OrderedDictionary = ["first": 0]
+        let spy = DefaultValueSpy(value: 2)
         
-        elements["first", default: 2] += 1
+        elements["first", default: spy.defaultValue()] += 1
+        
+        XCTAssertEqual(spy.numberOfTimesCalled, 0)
+    }
+    
+    func test_DictionaryWithOneElement_AfterSubscritingWithDefaultForOnlyKey_ContainsNewValueForKey() {
+        var elements: OrderedDictionary = ["first": 0]
+        let spy = DefaultValueSpy(value: 2)
+        
+        elements["first", default: spy.defaultValue()] += 1
         
         XCTAssertEqual(elements.count, 1)
         XCTAssertEqual(elements, ["first": 1])
     }
-    
     func test_DictionaryWithElements_AfterUpdatingValueForExistingKey_ContainsExpectedKeysAndValues() {
         var elements: OrderedDictionary = ["first": 0, "second": 1, "third": 2]
      
@@ -154,10 +195,20 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements, ["first": 0, "second": 2, "third": 2])
     }
     
-    func test_DictionaryWithElements_AfterSubscritingWithDefaultForExistingKey_DefaultValueIsNotCalledAndContainsExpectedKeysAndValues() {
+    func test_DictionaryWithElements_AfterSubscritingWithDefaultForExistingKey_DefaultValueIsNotCalled() {
         var elements: OrderedDictionary = ["first": 0, "second": 1, "third": 2]
+        let spy = DefaultValueSpy(value: 3)
         
-        elements["second", default: 3] += 1
+        elements["second", default: spy.defaultValue()] += 1
+        
+        XCTAssertEqual(spy.numberOfTimesCalled, 0)
+    }
+    
+    func test_DictionaryWithElements_AfterSubscritingWithDefaultForExistingKey_ContainsExpectedKeysAndValues() {
+        var elements: OrderedDictionary = ["first": 0, "second": 1, "third": 2]
+        let spy = DefaultValueSpy(value: 3)
+        
+        elements["second", default: spy.defaultValue()] += 1
         
         XCTAssertEqual(elements.count, 3)
         XCTAssertEqual(elements["first"], 0)
@@ -165,10 +216,11 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements["third"], 2)
     }
     
-    func test_DictionaryWithElements_AfterSubscritingWithDefaultForExistingKey_DefaultValueIsNotCalledAndContainsElementsInCorrectOrder() {
+    func test_DictionaryWithElements_AfterSubscritingWithDefaultForExistingKey_ContainsElementsInCorrectOrder() {
         var elements: OrderedDictionary = ["first": 0, "second": 1, "third": 2]
+        let spy = DefaultValueSpy(value: 3)
         
-        elements["second", default: 3] += 1
+        elements["second", default: spy.defaultValue()] += 1
         
         XCTAssertEqual(elements.count, 3)
         XCTAssertEqual(elements[0].key, "first")
@@ -222,5 +274,21 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements[1].key, "third")
         XCTAssertEqual(elements[1].value, 2)
         XCTAssertEqual(elements, ["second": 1, "third": 2])
+    }
+    
+    // MARK: - DefaultValueSpy
+    
+    final class DefaultValueSpy<Value> {
+        var value: Value
+        private(set) var numberOfTimesCalled = 0
+        
+        init(value: Value) {
+            self.value = value
+        }
+        
+        func defaultValue() -> Value {
+            numberOfTimesCalled += 1
+            return value
+        }
     }
 }
