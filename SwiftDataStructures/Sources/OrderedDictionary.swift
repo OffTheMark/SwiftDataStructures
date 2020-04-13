@@ -66,7 +66,7 @@ public struct OrderedDictionary<Key: Hashable, Value> {
             }
         }
         _modify {
-            yield &self[key]
+            yield &valuesByKey[key]
         }
     }
     
@@ -80,14 +80,11 @@ public struct OrderedDictionary<Key: Hashable, Value> {
         get {
             return self[key] ?? defaultValue()
         }
-        set {
-            updateValue(newValue, forKey: key)
-        }
         _modify {
             if containsKey(key) == false {
                 self[key] = defaultValue()
             }
-            yield &self[key]!
+            yield &valuesByKey[key]!
         }
     }
     

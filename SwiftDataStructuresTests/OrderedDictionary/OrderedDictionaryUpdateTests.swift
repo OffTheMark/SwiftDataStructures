@@ -23,10 +23,32 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements, ["first": 0])
     }
     
+    func test_EmptyDictionary_AfterSubscriptingElementWithDefaultForNewKey_CallsDefaultValueAndContainsOnlyValueForKey() {
+        var elements = OrderedDictionary<String, Int>()
+        XCTAssertTrue(elements.isEmpty)
+        
+        elements["first", default: 1] += 2
+        
+        XCTAssertEqual(elements.count, 1)
+        XCTAssertEqual(elements["first"], 3)
+        XCTAssertEqual(elements, ["first": 3])
+    }
+    
     func test_DictionaryWithOneElement_AfterAddingElementForNewKey_ContainsExistingElementFollowedByNewElement() {
         var elements: OrderedDictionary = ["first": 0]
         
         elements["second"] = 1
+        
+        XCTAssertEqual(elements.count, 2)
+        XCTAssertEqual(elements["first"], 0)
+        XCTAssertEqual(elements["second"], 1)
+        XCTAssertEqual(elements, ["first": 0, "second": 1])
+    }
+    
+    func test_DictionaryWithOneElement_AfterSubscriptingElementWithDefaultForNewKey_CallsDefaultValueAndContainsExistingElementFollowedByNewElement() {
+        var elements: OrderedDictionary = ["first": 0]
+        
+        elements["second", default: -1] += 2
         
         XCTAssertEqual(elements.count, 2)
         XCTAssertEqual(elements["first"], 0)
@@ -60,6 +82,32 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements, ["first": 0, "second": 1, "third": 2])
     }
     
+    func test_DictionaryWithElements_AfterSubscriptingElementWithDefaultForNewKey_CallsDefaultValueAndExistingKeyValuePairFollowedByNewKeyAndValue() {
+        var elements: OrderedDictionary = ["first": 0, "second": 1]
+        
+        elements["third", default: 1] += 1
+        
+        XCTAssertEqual(elements.count, 3)
+        XCTAssertEqual(elements["first"], 0)
+        XCTAssertEqual(elements["second"], 1)
+        XCTAssertEqual(elements["third"], 2)
+    }
+    
+    func test_DictionaryWithElements_AfterSubscriptingElementWithDefaultForNewKey_ContainsExistingElementsFollowedByNewElement() {
+        var elements: OrderedDictionary = ["first": 0, "second": 1]
+        
+        elements["third", default: 1] += 1
+        
+        XCTAssertEqual(elements.count, 3)
+        XCTAssertEqual(elements[0].key, "first")
+        XCTAssertEqual(elements[0].value, 0)
+        XCTAssertEqual(elements[1].key, "second")
+        XCTAssertEqual(elements[1].value, 1)
+        XCTAssertEqual(elements[2].key, "third")
+        XCTAssertEqual(elements[2].value, 2)
+        XCTAssertEqual(elements, ["first": 0, "second": 1, "third": 2])
+    }
+    
     // MARK: Updating Elements in an OrderedDictionary
     
     func test_DictionaryWithOneElement_AfterUpdatingValueForOnlyKey_ContainsOnlyNewValueForKey() {
@@ -71,7 +119,16 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements, ["first": 1])
     }
     
-    func test_DictionaryWithElements_AfterRemovingValueForOnlyKey_ContainsExpectedKeysAndValues() {
+    func test_DictionaryWithOneElement_AfterSubscritingWithDefaultForOnlyKey_DefaultValueIsNotCalledAndContainsNewValueForKey() {
+        var elements: OrderedDictionary = ["first": 0]
+        
+        elements["first", default: 2] += 1
+        
+        XCTAssertEqual(elements.count, 1)
+        XCTAssertEqual(elements, ["first": 1])
+    }
+    
+    func test_DictionaryWithElements_AfterUpdatingValueForExistingKey_ContainsExpectedKeysAndValues() {
         var elements: OrderedDictionary = ["first": 0, "second": 1, "third": 2]
      
         elements["second"] = 2
@@ -82,10 +139,36 @@ final class OrderedDictionaryUpdateTests: XCTestCase {
         XCTAssertEqual(elements["third"], 2)
     }
     
-    func test_DictionaryWithElements_AfterRemovingValueForOnlyKey_ContainsElementsInCorrectOrder() {
+    func test_DictionaryWithElements_AfterUpdatingValueForExistingKey_ContainsElementsInCorrectOrder() {
         var elements: OrderedDictionary = ["first": 0, "second": 1, "third": 2]
         
         elements["second"] = 2
+        
+        XCTAssertEqual(elements.count, 3)
+        XCTAssertEqual(elements[0].key, "first")
+        XCTAssertEqual(elements[0].value, 0)
+        XCTAssertEqual(elements[1].key, "second")
+        XCTAssertEqual(elements[1].value, 2)
+        XCTAssertEqual(elements[2].key, "third")
+        XCTAssertEqual(elements[2].value, 2)
+        XCTAssertEqual(elements, ["first": 0, "second": 2, "third": 2])
+    }
+    
+    func test_DictionaryWithElements_AfterSubscritingWithDefaultForExistingKey_DefaultValueIsNotCalledAndContainsExpectedKeysAndValues() {
+        var elements: OrderedDictionary = ["first": 0, "second": 1, "third": 2]
+        
+        elements["second", default: 3] += 1
+        
+        XCTAssertEqual(elements.count, 3)
+        XCTAssertEqual(elements["first"], 0)
+        XCTAssertEqual(elements["second"], 2)
+        XCTAssertEqual(elements["third"], 2)
+    }
+    
+    func test_DictionaryWithElements_AfterSubscritingWithDefaultForExistingKey_DefaultValueIsNotCalledAndContainsElementsInCorrectOrder() {
+        var elements: OrderedDictionary = ["first": 0, "second": 1, "third": 2]
+        
+        elements["second", default: 3] += 1
         
         XCTAssertEqual(elements.count, 3)
         XCTAssertEqual(elements[0].key, "first")
