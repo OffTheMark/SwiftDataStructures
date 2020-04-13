@@ -26,19 +26,20 @@ public struct Stack<Element> {
     // MARK: Accessing Elements
     
     public func peek() -> Element? {
-        return contents.first
+        return contents.last
     }
     
     // MARK: Adding Elements
     
     public mutating func push(_ element: Element) {
-        contents.prepend(element)
+        contents.append(element)
     }
     
     // MARK: Removing Elements
     
+    @discardableResult
     public mutating func pop() -> Element {
-        return contents.removeFirst()
+        return contents.removeLast()
     }
     
     public mutating func removeAll() {
