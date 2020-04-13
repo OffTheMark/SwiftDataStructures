@@ -125,9 +125,27 @@ extension Stack: BidirectionalCollection {
     }
 }
 
+// MARK: Equatable
+
+extension Stack: Equatable where Element: Equatable {
+    public static func == (lhs: Stack<Element>, rhs: Stack<Element>) -> Bool {
+        guard lhs.count == rhs.count else {
+            return false
+        }
+
+        let elementPairs = zip(lhs, rhs)
+
+        return elementPairs.allSatisfy({ left, right in
+            return left == right
+        })
+    }
+}
+
 // MARK: ExpressibleByArrayLiteral
 
 extension Stack: ExpressibleByArrayLiteral {
+    public typealias ArrayLiteralElement = Element
+
     public init(arrayLiteral elements: Element...) {
         self.init(elements)
     }
@@ -140,7 +158,3 @@ extension Stack: CustomStringConvertible {
         return String(describing: contents)
     }
 }
-
-// MARK: Equatable
-
-extension Stack: Equatable where Element: Equatable {}

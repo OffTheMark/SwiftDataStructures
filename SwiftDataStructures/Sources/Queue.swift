@@ -41,6 +41,10 @@ public struct Queue<Element> {
     public mutating func dequeue() -> Element {
         return contents.removeFirst()
     }
+    
+    public mutating func removeAll() {
+        contents.removeAll()
+    }
 }
 
 // MARK: Sequence
@@ -144,5 +148,13 @@ extension Queue: ExpressibleByArrayLiteral {
 
     public init(arrayLiteral elements: Element...) {
         self.init(elements)
+    }
+}
+
+// MARK: CustomStringConvertible
+
+extension Queue: CustomStringConvertible {
+    public var description: String {
+        return String(describing: contents)
     }
 }
