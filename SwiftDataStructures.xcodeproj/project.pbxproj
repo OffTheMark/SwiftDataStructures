@@ -33,6 +33,8 @@
 		8156F12624448F570053C775 /* OrderedDictionaryMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8156F12524448F570053C775 /* OrderedDictionaryMapTests.swift */; };
 		81D7ECBE2444EF9400FF98FE /* StackUpdateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECBD2444EF9400FF98FE /* StackUpdateTests.swift */; };
 		81D7ECC02444F22200FF98FE /* StackGetElementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECBF2444F22200FF98FE /* StackGetElementsTests.swift */; };
+		81D7ECC22444F9A200FF98FE /* QueueIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECC12444F9A200FF98FE /* QueueIterateTests.swift */; };
+		81D7ECC42444FA7A00FF98FE /* StackIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECC32444FA7A00FF98FE /* StackIterateTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		8156F12524448F570053C775 /* OrderedDictionaryMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionaryMapTests.swift; sourceTree = "<group>"; };
 		81D7ECBD2444EF9400FF98FE /* StackUpdateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackUpdateTests.swift; sourceTree = "<group>"; };
 		81D7ECBF2444F22200FF98FE /* StackGetElementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackGetElementsTests.swift; sourceTree = "<group>"; };
+		81D7ECC12444F9A200FF98FE /* QueueIterateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueIterateTests.swift; sourceTree = "<group>"; };
+		81D7ECC32444FA7A00FF98FE /* StackIterateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackIterateTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,7 @@
 			children = (
 				81562E8A242E85A60052CD03 /* QueueUpdateTests.swift */,
 				81562E8C242E898E0052CD03 /* QueueGetElementsTests.swift */,
+				81D7ECC12444F9A200FF98FE /* QueueIterateTests.swift */,
 			);
 			path = Queue;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 			children = (
 				81D7ECBD2444EF9400FF98FE /* StackUpdateTests.swift */,
 				81D7ECBF2444F22200FF98FE /* StackGetElementsTests.swift */,
+				81D7ECC32444FA7A00FF98FE /* StackIterateTests.swift */,
 			);
 			path = Stack;
 			sourceTree = "<group>";
@@ -341,8 +347,10 @@
 				81562E79242E6B280052CD03 /* DequeGetElementsTests.swift in Sources */,
 				813ABC7324338110006DAD25 /* BagCountTests.swift in Sources */,
 				81357EFC242E923100DB91C1 /* BagUpdateTests.swift in Sources */,
+				81D7ECC22444F9A200FF98FE /* QueueIterateTests.swift in Sources */,
 				81562E77242E6B110052CD03 /* DequeRotateTests.swift in Sources */,
 				813ABC71243373B4006DAD25 /* BagSubscriptTests.swift in Sources */,
+				81D7ECC42444FA7A00FF98FE /* StackIterateTests.swift in Sources */,
 				81D7ECC02444F22200FF98FE /* StackGetElementsTests.swift in Sources */,
 				8156F122243FB1030053C775 /* OrderedDictionaryIterateTests.swift in Sources */,
 				81562E8D242E898E0052CD03 /* QueueGetElementsTests.swift in Sources */,
