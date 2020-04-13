@@ -39,18 +39,6 @@ final class QueueUpdateTests: XCTestCase {
         XCTAssertEqual(queue, [0, 1, 2, 3, 4, 5])
     }
     
-    // MARK: Removing Elements in an Empty Queue
-    
-    func test_EmptyQueue_AfterDequeuing_ReturnsNilAndIsStillEmpty() {
-        var queue = Queue<Int>()
-        XCTAssertTrue(queue.isEmpty)
-        
-        let dequeued = queue.dequeue()
-        
-        XCTAssertNil(dequeued)
-        XCTAssertEqual(queue, [])
-    }
-    
     // MARK: Removing Elements in a Non-Empty Queue
     
     func test_QueueWithOneElement_AfterDequeuing_ReturnsElementAndIsEmpty() {

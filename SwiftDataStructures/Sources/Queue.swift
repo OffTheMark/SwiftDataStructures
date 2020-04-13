@@ -23,8 +23,10 @@ public struct Queue<Element> {
         }
     }
     
+    // MARK: Accessing Elements
+    
     public func peek() -> Element? {
-        return first
+        return contents.first
     }
     
     // MARK: Adding Elements
@@ -35,13 +37,8 @@ public struct Queue<Element> {
     
     // MARK: Removing Elements
     
-    public mutating func dequeue() -> Element? {
-        if isEmpty {
-            return nil
-        }
-        
-        let first = contents.removeFirst()
-        return first
+    public mutating func dequeue() -> Element {
+        return contents.removeFirst()
     }
 }
 

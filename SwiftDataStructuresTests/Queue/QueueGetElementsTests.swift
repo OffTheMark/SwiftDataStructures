@@ -17,10 +17,8 @@ final class QueueGetElementsTests: XCTestCase {
         XCTAssertTrue(queue.isEmpty)
         
         let peeked = queue.peek()
-        let first = queue.first
         
         XCTAssertNil(peeked)
-        XCTAssertNil(first)
     }
     
     // MARK: Getting Elements in a Non-Empty Queue
@@ -29,19 +27,15 @@ final class QueueGetElementsTests: XCTestCase {
         let queue: Queue = [0]
         
         let peeked = queue.peek()
-        let first = queue.first
         
         XCTAssertEqual(peeked, 0)
-        XCTAssertEqual(first, 0)
     }
 
     func test_QueueWitElements_AfterGettingFirst_ReturnsFirstElement() {
         let queue: Queue = [0, 1, 2, 3]
         
         let peeked = queue.peek()
-        let first = queue.first
         
         XCTAssertEqual(peeked, 0)
-        XCTAssertEqual(first, 0)
     }
 }
