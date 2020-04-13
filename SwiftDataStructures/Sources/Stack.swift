@@ -23,28 +23,26 @@ public struct Stack<Element> {
         }
     }
     
-    public mutating func push(_ element: Element) {
-        contents.append(element)
+    // MARK: Accessing Elements
+    
+    public func peek() -> Element? {
+        return contents.first
     }
     
-    public mutating func pop() -> Element? {
-        return contents.popLast()
+    // MARK: Adding Elements
+    
+    public mutating func push(_ element: Element) {
+        contents.prepend(element)
+    }
+    
+    // MARK: Removing Elements
+    
+    public mutating func pop() -> Element {
+        return contents.removeFirst()
     }
     
     public mutating func removeAll() {
         contents.removeAll()
-    }
-    
-    public var top: Element? {
-        return contents.last
-    }
-    
-    public var count: Int {
-        return contents.count
-    }
-    
-    public var isEmpty: Bool {
-        return contents.isEmpty
     }
 }
 
@@ -67,6 +65,50 @@ extension Stack: Sequence {
         public mutating func next() -> Element? {
             return base.next()
         }
+    }
+}
+
+// MARK: Collection
+
+extension Stack: Collection {
+    public typealias Index = Int
+    
+    // MARK: Accessing a Collection's Elements
+    
+    public subscript(position: Int) -> Element {
+        return contents[position]
+    }
+    
+    // MARK: Manipulating Indices
+    
+    public var startIndex: Int {
+        return contents.startIndex
+    }
+
+    public var endIndex: Int {
+        return contents.endIndex
+    }
+
+    public var indices: Range<Int> {
+        return contents.indices
+    }
+
+    public func index(after i: Int) -> Int {
+        return contents.index(after: i)
+    }
+
+    // MARK: Instance Properties
+
+    public var count: Int {
+        return contents.count
+    }
+
+    public var first: Element? {
+        return contents.first
+    }
+
+    public var isEmpty: Bool {
+        return contents.isEmpty
     }
 }
 

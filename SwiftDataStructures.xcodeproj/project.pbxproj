@@ -182,8 +182,8 @@
 				81562E6D242E6A4C0052CD03 /* LinkedList.swift */,
 				81562E52242E35F80052CD03 /* OrderedDictionary.swift */,
 				81562E85242E6E800052CD03 /* Queue.swift */,
-				81562E87242E6E8D0052CD03 /* TreeNode.swift */,
 				8156F12324448BF50053C775 /* Stack.swift */,
+				81562E87242E6E8D0052CD03 /* TreeNode.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
