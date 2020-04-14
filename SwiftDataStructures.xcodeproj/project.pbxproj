@@ -32,6 +32,8 @@
 		8156F12424448BF50053C775 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8156F12324448BF50053C775 /* Stack.swift */; };
 		8156F12624448F570053C775 /* OrderedDictionaryMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8156F12524448F570053C775 /* OrderedDictionaryMapTests.swift */; };
 		81B3A0F22445F9B800E9408E /* SortExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A0F12445F9B800E9408E /* SortExtensions.swift */; };
+		81B3A0F52445FD7400E9408E /* SortCriterionSortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A0F42445FD7400E9408E /* SortCriterionSortTests.swift */; };
+		81B3A0F82446057B00E9408E /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A0F72446057B00E9408E /* ArrayExtensions.swift */; };
 		81D7ECBE2444EF9400FF98FE /* StackUpdateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECBD2444EF9400FF98FE /* StackUpdateTests.swift */; };
 		81D7ECC02444F22200FF98FE /* StackGetElementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECBF2444F22200FF98FE /* StackGetElementsTests.swift */; };
 		81D7ECC22444F9A200FF98FE /* QueueIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECC12444F9A200FF98FE /* QueueIterateTests.swift */; };
@@ -77,6 +79,8 @@
 		8156F12324448BF50053C775 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		8156F12524448F570053C775 /* OrderedDictionaryMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionaryMapTests.swift; sourceTree = "<group>"; };
 		81B3A0F12445F9B800E9408E /* SortExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortExtensions.swift; sourceTree = "<group>"; };
+		81B3A0F42445FD7400E9408E /* SortCriterionSortTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCriterionSortTests.swift; sourceTree = "<group>"; };
+		81B3A0F72446057B00E9408E /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		81D7ECBD2444EF9400FF98FE /* StackUpdateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackUpdateTests.swift; sourceTree = "<group>"; };
 		81D7ECBF2444F22200FF98FE /* StackGetElementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackGetElementsTests.swift; sourceTree = "<group>"; };
 		81D7ECC12444F9A200FF98FE /* QueueIterateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueIterateTests.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				81562E60242E68630052CD03 /* OrderedDictionary */,
 				81562E89242E858D0052CD03 /* Queue */,
 				81D7ECBC2444EF6D00FF98FE /* Stack */,
+				81B3A0F32445FD3300E9408E /* Sort Extensions */,
+				81B3A0F62446056F00E9408E /* Extensions */,
 				81562E47242E35690052CD03 /* Info.plist */,
 			);
 			path = SwiftDataStructuresTests;
@@ -208,6 +214,22 @@
 				81D7ECC12444F9A200FF98FE /* QueueIterateTests.swift */,
 			);
 			path = Queue;
+			sourceTree = "<group>";
+		};
+		81B3A0F32445FD3300E9408E /* Sort Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				81B3A0F42445FD7400E9408E /* SortCriterionSortTests.swift */,
+			);
+			path = "Sort Extensions";
+			sourceTree = "<group>";
+		};
+		81B3A0F62446056F00E9408E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				81B3A0F72446057B00E9408E /* ArrayExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		81D7ECBC2444EF6D00FF98FE /* Stack */ = {
@@ -350,6 +372,7 @@
 				81562E8B242E85A60052CD03 /* QueueUpdateTests.swift in Sources */,
 				81562E79242E6B280052CD03 /* DequeGetElementsTests.swift in Sources */,
 				813ABC7324338110006DAD25 /* BagCountTests.swift in Sources */,
+				81B3A0F52445FD7400E9408E /* SortCriterionSortTests.swift in Sources */,
 				81357EFC242E923100DB91C1 /* BagUpdateTests.swift in Sources */,
 				81D7ECC22444F9A200FF98FE /* QueueIterateTests.swift in Sources */,
 				81562E77242E6B110052CD03 /* DequeRotateTests.swift in Sources */,
@@ -360,6 +383,7 @@
 				81562E8D242E898E0052CD03 /* QueueGetElementsTests.swift in Sources */,
 				8156F12624448F570053C775 /* OrderedDictionaryMapTests.swift in Sources */,
 				813ABC6D24325F77006DAD25 /* OrderedDictionaryUpdateIndexTests.swift in Sources */,
+				81B3A0F82446057B00E9408E /* ArrayExtensions.swift in Sources */,
 				81562E73242E6AD80052CD03 /* DequeUpdateTests.swift in Sources */,
 				81D7ECBE2444EF9400FF98FE /* StackUpdateTests.swift in Sources */,
 				81562E7B242E6B510052CD03 /* LinkedListUpdateTests.swift in Sources */,
