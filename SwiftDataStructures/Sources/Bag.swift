@@ -279,7 +279,7 @@ extension Bag: Collection {
     }
 
     public func index(after i: Index) -> Index {
-        return Index(contents.index(after: i.index))
+        return Index(contents.index(after: i.base))
     }
 
     // MARK: Instance Properties
@@ -305,7 +305,7 @@ extension Bag: Collection {
     public subscript(position: Index) -> Element {
         precondition(indices.contains(position), "Index is out of bounds")
 
-        let dictionaryElement = contents[position.index]
+        let dictionaryElement = contents[position.base]
         return (dictionaryElement.key, dictionaryElement.value)
     }
 }
@@ -375,10 +375,10 @@ extension Bag.Items: Sequence {
 // MARK: - BagIndex
 
 public struct BagIndex<Element: Hashable> {
-    fileprivate let index: DictionaryIndex<Element, Int>
+    fileprivate let base: Dictionary<Element, Int>.Index
 
-    fileprivate init(_ dictionaryIndex: DictionaryIndex<Element, Int>) {
-        self.index = dictionaryIndex
+    fileprivate init(_ dictionaryIndex: Dictionary<Element, Int>.Index) {
+        self.base = dictionaryIndex
     }
 }
 
@@ -390,18 +390,18 @@ extension BagIndex: Equatable {}
 
 extension BagIndex: Comparable {
     public static func <= (lhs: BagIndex, rhs: BagIndex) -> Bool {
-        return lhs.index <= rhs.index
+        return lhs.base <= rhs.base
     }
 
     public static func >= (lhs: BagIndex, rhs: BagIndex) -> Bool {
-        return lhs.index >= rhs.index
+        return lhs.base >= rhs.base
     }
 
     public static func < (lhs: BagIndex, rhs: BagIndex) -> Bool {
-        return lhs.index < rhs.index
+        return lhs.base < rhs.base
     }
 
     public static func > (lhs: BagIndex, rhs: BagIndex) -> Bool {
-        return lhs.index > rhs.index
+        return lhs.base > rhs.base
     }
 }
