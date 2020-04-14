@@ -267,4 +267,48 @@ extension Sequence {
         return self.max(by: areInIncreasingOrder)
     }
 }
+
+// MARK: - MutableCollection
+
+extension MutableCollection where Self: RandomAccessCollection {
+    // MARK: Reordering a Collection's Elements
+    
+    /// Sorts the collection in place, using the value represented by the given key path and order as the comparison between elements.
+    ///
+    /// - Parameters:
+    ///   - keyPath: Represents the value used to compare elements of the sequence.
+    ///   - order: Order used to compare elements of the sequence.
+    mutating func sort<Value: Comparable>(by keyPath: KeyPath<Element, Value>, order: SortOrder = .ascending) {
+        let criterion = SortCriterion(keyPath: keyPath, order: order)
+        self.sort(by: criterion.areInIncreasingOrder)
+    }
+    
+    /// Sorts the collection in place, using the optional value represented by the given key path and order as the comparison between elements.
+    ///
+    /// - Parameters:
+    ///   - keyPath: Represents the optional value used to compare elements of the sequence.
+    ///   - order: Order used to compare elements of the sequence.
+    mutating func sort<Value: Comparable>(by keyPath: KeyPath<Element, Value?>, order: SortOrder = .ascending) {
+        let criterion = SortCriterion(keyPath: keyPath, order: order)
+        self.sort(by: criterion.areInIncreasingOrder)
+    }
+    
+    /// Sorts the collection in place, using the given criteria as the comparison between elements.
+    ///
+    /// - Parameter criteria: Criteria used to compare elements of the sequence.
+    mutating func sort(by criteria: [SortCriterion<Element>]) {
+        let areInIncreasingOrder: (Element, Element) -> Bool = { first, second in
+            for criterion in criteria {
+                if criterion.areInEqualOrder(first, second) {
+                    continue
+                }
+                
+                return criterion.areInIncreasingOrder(first, second)
+            }
+            
+            return false
+        }
+        
+        self.sort(by: areInIncreasingOrder)
+    }
 }
