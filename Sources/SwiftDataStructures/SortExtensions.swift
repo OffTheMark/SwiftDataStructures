@@ -10,10 +10,17 @@ import Foundation
 
 // MARK: SortOrder
 
+///
+/// Order in which to compare elements.
+///
 public enum SortOrder {
+    /// Ascending order.
     case ascending
+    
+    /// Descending order
     case descending
     
+    /// Returns the comparison predicate used to compare two values of type `T`.
     public func makeComparator<T: Comparable>() -> (T, T) -> Bool {
         switch self {
         case .ascending:
@@ -24,6 +31,7 @@ public enum SortOrder {
         }
     }
     
+    /// Returns the comparison predicate used to compare two optional values of type `T?`.
     func makeComparator<T: Comparable>() -> (T?, T?) -> Bool {
         let valueComparator: (T, T) -> Bool = makeComparator()
         
@@ -47,11 +55,31 @@ public enum SortOrder {
 
 // MARK: - SortCriterion
 
+///
+/// Criterion allowing to compare elements of a sequence or collection more easily.
+///
 public struct SortCriterion<Element> {
+    // MARK: Properties
+    
+    /// Predicate that returns `true` if its first argument should be ordered before its second argument; otherwise, `false`.
     public let areInIncreasingOrder: (Element, Element) -> Bool
     
+    /// Predicate that returns `true` if its first argument is equal to its second argument.
     public let areInEqualOrder: (Element, Element) -> Bool
     
+    // MARK: Create a SortCriterion
+    
+    /// Creates a new criterion using the given predicates.
+    ///
+    /// - Parameters:
+    ///   - areInIncreasingOrder: Predicate that returns `true` if its first argument should be ordered before its second argument; otherwise, `false`.
+    ///   - areInEqualOrder: Predicate that returns `true` if its first argument is equal to its second argument.
+    ///
+    /// The predicate indicating if arguments are in increasing order must be a _strict weak ordering_ over the elements. That is, for any elements `a`, `b`, and `c`, the following conditions must hold:
+    /// - `areInIncreasingOrder(a, a)` is always `false`. (Irreflexivity)
+    /// - If `areInIncreasingOrder(a, b)` and `areInIncreasingOrder(b, c)` are both `true`, then `areInIncreasingOrder(a, c)` is also `true`. (Transitive comparability)
+    /// - Two elements are incomparable if neither is ordered before the other according to the predicate. If `a` and `b` are incomparable, and `b` and `c` are incomparable, then `a` and `c` are also
+    /// incomparable. (Transitive incomparability)
     public init(
         areInIncreasingOrder: @escaping (Element, Element) -> Bool,
         areInEqualOrder: @escaping (Element, Element) -> Bool
@@ -60,6 +88,10 @@ public struct SortCriterion<Element> {
         self.areInEqualOrder = areInEqualOrder
     }
     
+    /// Creates a new criterion using the value represented by the given key path and order as the comparison between elements.
+    /// - Parameters:
+    ///   - keyPath: Represents the value used to compare elements of the sequence.
+    ///   - order: Order used to compare elements of the sequence.
     public init<Value: Comparable>(
         keyPath: KeyPath<Element, Value>,
         order: SortOrder = .ascending
@@ -75,6 +107,10 @@ public struct SortCriterion<Element> {
         self.init(areInIncreasingOrder: areInIncreasingOrder, areInEqualOrder: areInEqualOrder)
     }
     
+    /// Creates a new criterion using the optional value represented by the given key path and order as the comparison between elements.
+    /// - Parameters:
+    ///   - keyPath: Represents the optional value used to compare elements of the sequence.
+    ///   - order: Order used to compare elements of the sequence.
     public init<Value: Comparable>(
         keyPath: KeyPath<Element, Value?>,
         order: SortOrder = .ascending
