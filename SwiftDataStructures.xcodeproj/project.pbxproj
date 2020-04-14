@@ -34,6 +34,9 @@
 		81B3A0F22445F9B800E9408E /* SortExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A0F12445F9B800E9408E /* SortExtensions.swift */; };
 		81B3A0F52445FD7400E9408E /* SortCriterionSortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A0F42445FD7400E9408E /* SortCriterionSortTests.swift */; };
 		81B3A0F82446057B00E9408E /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A0F72446057B00E9408E /* ArrayExtensions.swift */; };
+		81B3A0FA24463A1200E9408E /* SortCriterionMinMaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A0F924463A1200E9408E /* SortCriterionMinMaxTests.swift */; };
+		81B3A0FD24463A3D00E9408E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A0FC24463A3D00E9408E /* Song.swift */; };
+		81B3A10024463A6100E9408E /* SongTestMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A0FF24463A6100E9408E /* SongTestMacros.swift */; };
 		81D7ECBE2444EF9400FF98FE /* StackUpdateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECBD2444EF9400FF98FE /* StackUpdateTests.swift */; };
 		81D7ECC02444F22200FF98FE /* StackGetElementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECBF2444F22200FF98FE /* StackGetElementsTests.swift */; };
 		81D7ECC22444F9A200FF98FE /* QueueIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7ECC12444F9A200FF98FE /* QueueIterateTests.swift */; };
@@ -81,6 +84,9 @@
 		81B3A0F12445F9B800E9408E /* SortExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortExtensions.swift; sourceTree = "<group>"; };
 		81B3A0F42445FD7400E9408E /* SortCriterionSortTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCriterionSortTests.swift; sourceTree = "<group>"; };
 		81B3A0F72446057B00E9408E /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		81B3A0F924463A1200E9408E /* SortCriterionMinMaxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCriterionMinMaxTests.swift; sourceTree = "<group>"; };
+		81B3A0FC24463A3D00E9408E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		81B3A0FF24463A6100E9408E /* SongTestMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTestMacros.swift; sourceTree = "<group>"; };
 		81D7ECBD2444EF9400FF98FE /* StackUpdateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackUpdateTests.swift; sourceTree = "<group>"; };
 		81D7ECBF2444F22200FF98FE /* StackGetElementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackGetElementsTests.swift; sourceTree = "<group>"; };
 		81D7ECC12444F9A200FF98FE /* QueueIterateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueIterateTests.swift; sourceTree = "<group>"; };
@@ -145,6 +151,8 @@
 				81D7ECBC2444EF6D00FF98FE /* Stack */,
 				81B3A0F32445FD3300E9408E /* Sort Extensions */,
 				81B3A0F62446056F00E9408E /* Extensions */,
+				81B3A0FB24463A2700E9408E /* Test Data */,
+				81B3A0FE24463A5100E9408E /* Test Helpers */,
 				81562E47242E35690052CD03 /* Info.plist */,
 			);
 			path = SwiftDataStructuresTests;
@@ -220,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				81B3A0F42445FD7400E9408E /* SortCriterionSortTests.swift */,
+				81B3A0F924463A1200E9408E /* SortCriterionMinMaxTests.swift */,
 			);
 			path = "Sort Extensions";
 			sourceTree = "<group>";
@@ -230,6 +239,22 @@
 				81B3A0F72446057B00E9408E /* ArrayExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		81B3A0FB24463A2700E9408E /* Test Data */ = {
+			isa = PBXGroup;
+			children = (
+				81B3A0FC24463A3D00E9408E /* Song.swift */,
+			);
+			path = "Test Data";
+			sourceTree = "<group>";
+		};
+		81B3A0FE24463A5100E9408E /* Test Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				81B3A0FF24463A6100E9408E /* SongTestMacros.swift */,
+			);
+			path = "Test Helpers";
 			sourceTree = "<group>";
 		};
 		81D7ECBC2444EF6D00FF98FE /* Stack */ = {
@@ -370,12 +395,15 @@
 				81562E81242E6B950052CD03 /* LinkedListRangeReplaceTests.swift in Sources */,
 				81562E7F242E6B7B0052CD03 /* LinkedListGetElementsTests.swift in Sources */,
 				81562E8B242E85A60052CD03 /* QueueUpdateTests.swift in Sources */,
+				81B3A10024463A6100E9408E /* SongTestMacros.swift in Sources */,
 				81562E79242E6B280052CD03 /* DequeGetElementsTests.swift in Sources */,
 				813ABC7324338110006DAD25 /* BagCountTests.swift in Sources */,
 				81B3A0F52445FD7400E9408E /* SortCriterionSortTests.swift in Sources */,
 				81357EFC242E923100DB91C1 /* BagUpdateTests.swift in Sources */,
 				81D7ECC22444F9A200FF98FE /* QueueIterateTests.swift in Sources */,
 				81562E77242E6B110052CD03 /* DequeRotateTests.swift in Sources */,
+				81B3A0FA24463A1200E9408E /* SortCriterionMinMaxTests.swift in Sources */,
+				81B3A0FD24463A3D00E9408E /* Song.swift in Sources */,
 				813ABC71243373B4006DAD25 /* BagSubscriptTests.swift in Sources */,
 				81D7ECC42444FA7A00FF98FE /* StackIterateTests.swift in Sources */,
 				81D7ECC02444F22200FF98FE /* StackGetElementsTests.swift in Sources */,
