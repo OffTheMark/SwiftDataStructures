@@ -28,9 +28,12 @@ final class SortCriterionSortTests: XCTestCase {
         
         // When
         let sorted = songs.sorted(by: \.album.artist)
+        var sortedInPlace = songs
+        sortedInPlace.sort(by: \.album.artist)
         
         // Then
         assertThat(sorted, areEqualTo: songs)
+        assertThat(sortedInPlace, areEqualTo: songs)
     }
     
     func test_Songs_WhenSortingByTitleDescending_ReturnsSongsInCorrectOrder() {
@@ -59,9 +62,12 @@ final class SortCriterionSortTests: XCTestCase {
         
         // When
         let sorted = songs.sorted(by: \.title, order: .descending)
+        var sortedInPlace = songs
+        sortedInPlace.sort(by: \.title, order: .descending)
         
         // Then
         assertThat(sorted, areEqualTo: expected)
+        assertThat(sortedInPlace, areEqualTo: expected)
     }
     
     // MARK: Sort a Sequence by a Keypath with Optional Value
@@ -91,10 +97,13 @@ final class SortCriterionSortTests: XCTestCase {
         ]
         
         // When
-        let sorted = songs.sorted(by: \.trackNumber)
+        let sorted = songs.sorted(by: \.trackNumber, order: .ascending)
+        var sortedInPlace = songs
+        sortedInPlace.sort(by: \.trackNumber, order: .ascending)
         
         // Then
         assertThat(sorted, areEqualTo: expected)
+        assertThat(sortedInPlace, areEqualTo: expected)
     }
     
     func test_SongsWithSomeHavingArtistsDifferentThanAlbumsAndSomeNot_WhenSortingBySongArtistDescending_ReturnsSongsInCorrectOrder() {
@@ -128,9 +137,12 @@ final class SortCriterionSortTests: XCTestCase {
         
         // When
         let sorted = songs.sorted(by: \.artist, order: .descending)
+        var sortedInPlace = songs
+        sortedInPlace.sort(by: \.artist, order: .descending)
         
         // Then
         assertThat(sorted, areEqualTo: expected)
+        assertThat(sortedInPlace, areEqualTo: expected)
     }
     
     // MARK: Sort a Sequence by Multiple Criteria
@@ -171,15 +183,19 @@ final class SortCriterionSortTests: XCTestCase {
         ]
         
         // When
-        let sorted = songs.sorted(
-            by: [
-                SortCriterion(keyPath: \.album.artist, order: .ascending),
-                SortCriterion(keyPath: \.album.year, order: .descending)
-            ]
-        )
+        let sorted = songs.sorted(by: [
+            SortCriterion(keyPath: \.album.artist, order: .ascending),
+            SortCriterion(keyPath: \.album.year, order: .descending)
+        ])
+        var sortedInPlace = songs
+        sortedInPlace.sort(by: [
+            SortCriterion(keyPath: \.album.artist, order: .ascending),
+            SortCriterion(keyPath: \.album.year, order: .descending)
+        ])
         
         // Then
         assertThat(sorted, areEqualTo: expected)
+        assertThat(sortedInPlace, areEqualTo: expected)
     }
 }
 
