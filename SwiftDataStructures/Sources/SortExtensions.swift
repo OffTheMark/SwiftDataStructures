@@ -23,6 +23,26 @@ public enum SortOrder {
             return (>)
         }
     }
+    
+    func makeComparator<T: Comparable>() -> (T?, T?) -> Bool {
+        let valueComparator: (T, T) -> Bool = makeComparator()
+        
+        return { first, second in
+            switch (first, second) {
+            case (.some(let first), .some(let second)):
+                return valueComparator(first, second)
+                
+            case (.some, .none):
+                return self == .ascending
+                
+            case (.none, .some):
+                return self == .descending
+                
+            case (.none, .none):
+                return false
+            }
+        }
+    }
 }
 
 // MARK: - SortCriterion
@@ -54,6 +74,21 @@ public struct SortCriterion<Element> {
         
         self.init(areInIncreasingOrder: areInIncreasingOrder, areInEqualOrder: areInEqualOrder)
     }
+    
+    public init<Value: Comparable>(
+        keyPath: KeyPath<Element, Value?>,
+        order: SortOrder = .ascending
+    ) {
+        let valueComparator: (Value?, Value?) -> Bool = order.makeComparator()
+        let areInIncreasingOrder: (Element, Element) -> Bool = { first, second in
+            return valueComparator(first[keyPath: keyPath], second[keyPath: keyPath])
+        }
+        let areInEqualOrder: (Element, Element) -> Bool = { first, second in
+            return first[keyPath: keyPath] == second[keyPath: keyPath]
+        }
+        
+        self.init(areInIncreasingOrder: areInIncreasingOrder, areInEqualOrder: areInEqualOrder)
+    }
 }
 
 // MARK: - Sequence
@@ -61,6 +96,14 @@ public struct SortCriterion<Element> {
 extension Sequence {
     func sorted<Value: Comparable>(
         by keyPath: KeyPath<Element, Value>,
+        order: SortOrder = .ascending
+    ) -> [Element] {
+        let criterion = SortCriterion(keyPath: keyPath, order: order)
+        return self.sorted(by: [criterion])
+    }
+    
+    func sorted<Value: Comparable>(
+        by keyPath: KeyPath<Element, Value?>,
         order: SortOrder = .ascending
     ) -> [Element] {
         let criterion = SortCriterion(keyPath: keyPath, order: order)
