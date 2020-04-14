@@ -94,22 +94,59 @@ public struct SortCriterion<Element> {
 // MARK: - Sequence
 
 extension Sequence {
+    // MARK: Reordering a Sequence's Elements
+    
+    /// Returns the elements of the sequence, sorted using the value represented by the given key path and the given order as comparison between elements.
+    ///
+    /// - Parameters:
+    ///   - keyPath: Represents the value used to compare elements of the sequence.
+    ///   - order: Order used to compare elements of the sequence.
+    ///
+    /// - Returns: A sorted array of the sequence’s elements.
+    ///
+    /// In this first example, we sort a sequence of `String` values in ascending order of their `count`.
+    /// ```
+    /// let names = ["Adam", "John", "Eve", "Michael"]
+    /// let sorted = names.sorted(by: \.count, order: .ascending)
+    /// print(sorted)
+    /// // Prints "["Eve", "Adam", "John", "Michael"]"
+    /// ```
+    ///
+    /// In this second example, we sort the elements of this same sequence in descending order of their `count`.
+    /// ```
+    /// let names = ["Adam", "John", "Eve", "Michael"]
+    /// let sorted = names.sorted(by: \.count, order: .descending)
+    /// print(sorted)
+    /// // Prints "["Michael", "Adam", "John", "Eve"]"
+    /// ```
     func sorted<Value: Comparable>(
         by keyPath: KeyPath<Element, Value>,
         order: SortOrder = .ascending
     ) -> [Element] {
         let criterion = SortCriterion(keyPath: keyPath, order: order)
-        return self.sorted(by: [criterion])
+        return self.sorted(by: criterion.areInIncreasingOrder)
     }
     
+    /// Returns the elements of the sequence, sorted using the optional value represented by the given key path and the given order as comparison between elements.
+    ///
+    /// - Parameters:
+    ///   - keyPath: Represents the optional value used to compare elements of the sequence.
+    ///   - order: Order used to compare elements of the sequence.
+    ///
+    /// - Returns: A sorted array of the sequence’s elements.
     func sorted<Value: Comparable>(
         by keyPath: KeyPath<Element, Value?>,
         order: SortOrder = .ascending
     ) -> [Element] {
         let criterion = SortCriterion(keyPath: keyPath, order: order)
-        return self.sorted(by: [criterion])
+        return self.sorted(by: criterion.areInIncreasingOrder)
     }
     
+    /// Returns the elements of the sequence, sorted using the given criteria as the comparison between elements.
+    ///
+    /// - Parameter criteria: Criteria used to compare elements of the sequence.
+    ///
+    /// - Returns: A sorted array of the sequence’s elements.
     func sorted(by criteria: [SortCriterion<Element>]) -> [Element] {
         let areInIncreasingOrder: (Element, Element) -> Bool = { first, second in
             for criterion in criteria {
