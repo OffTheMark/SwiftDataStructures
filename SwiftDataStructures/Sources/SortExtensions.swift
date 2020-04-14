@@ -162,4 +162,109 @@ extension Sequence {
         
         return self.sorted(by: areInIncreasingOrder)
     }
+    
+    // MARK: Finding Elements
+    
+    /// Returns the minimum element in the sequence, using the value represented by the given key path and the given order as comparison between elements.
+    ///
+    /// - Parameters:
+    ///   - keyPath: Represents the value used to compare elements of the sequence.
+    ///   - order: Order used to compare elements of the sequence.
+    ///
+    /// - Returns: The sequence’s minimum element, according to `keyPath`and `order`. If the sequence has no elements, returns `nil`.
+    func min<Value: Comparable>(
+        by keyPath: KeyPath<Element, Value>,
+        order: SortOrder = .ascending
+    ) -> Element? {
+        let criterion = SortCriterion(keyPath: keyPath, order: order)
+        return self.min(by: criterion.areInIncreasingOrder)
+    }
+    
+    /// Returns the minimum element in the sequence, using the optional value represented by the given key path and the given order as comparison between elements.
+    ///
+    /// - Parameters:
+    ///   - keyPath: Represents the optional value used to compare elements of the sequence.
+    ///   - order: Order used to compare elements of the sequence.
+    ///
+    /// - Returns: The sequence’s minimum element, according to `keyPath`and `order`. If the sequence has no elements, returns `nil`.
+    func min<Value: Comparable>(
+        by keyPath: KeyPath<Element, Value?>,
+        order: SortOrder = .ascending
+    ) -> Element? {
+        let criterion = SortCriterion(keyPath: keyPath, order: order)
+        return self.min(by: criterion.areInIncreasingOrder)
+    }
+    
+    /// Returns the minimum element in the sequence, using the given criteria as comparison between elements.
+    ///
+    /// - Parameter criteria: Criteria used to compare elements of the sequence.
+    ///
+    /// - Returns: The sequence’s minimum element, according to `criteria`. If the sequence has no elements, returns `nil`.
+    func min(by criteria: [SortCriterion<Element>]) -> Element? {
+        let areInIncreasingOrder: (Element, Element) -> Bool = { first, second in
+            for criterion in criteria {
+                if criterion.areInEqualOrder(first, second) {
+                    continue
+                }
+                
+                return criterion.areInIncreasingOrder(first, second)
+            }
+            
+            return false
+        }
+        
+        return self.min(by: areInIncreasingOrder)
+    }
+    
+    /// Returns the maximum element in the sequence, using the value represented by the given key path and the given order as comparison between elements.
+    ///
+    /// - Parameters:
+    ///   - keyPath: Represents the value used to compare elements of the sequence.
+    ///   - order: Order used to compare elements of the sequence.
+    ///
+    /// - Returns: The sequence’s maximum element, according to `keyPath`and `order`. If the sequence has no elements, returns `nil`.
+    func max<Value: Comparable>(
+        by keyPath: KeyPath<Element, Value>,
+        order: SortOrder = .ascending
+    ) -> Element? {
+        let criterion = SortCriterion(keyPath: keyPath, order: order)
+        return self.max(by: criterion.areInIncreasingOrder)
+    }
+    
+    /// Returns the maximum element in the sequence, using the optional value represented by the given key path and the given order as comparison between elements.
+    ///
+    /// - Parameters:
+    ///   - keyPath: Represents the optional value used to compare elements of the sequence.
+    ///   - order: Order used to compare elements of the sequence.
+    ///
+    /// - Returns: The sequence’s maximum element, according to `keyPath`and `order`. If the sequence has no elements, returns `nil`.
+    func max<Value: Comparable>(
+        by keyPath: KeyPath<Element, Value?>,
+        order: SortOrder = .ascending
+    ) -> Element? {
+        let criterion = SortCriterion(keyPath: keyPath, order: order)
+        return self.max(by: criterion.areInIncreasingOrder)
+    }
+    
+    /// Returns the maximum element in the sequence, using the given criteria as comparison between elements.
+    ///
+    /// - Parameter criteria: Criteria used to compare elements of the sequence.
+    ///
+    /// - Returns: The sequence’s maximum element, according to `criteria`. If the sequence has no elements, returns `nil`.
+    func max(by criteria: [SortCriterion<Element>]) -> Element? {
+        let areInIncreasingOrder: (Element, Element) -> Bool = { first, second in
+            for criterion in criteria {
+                if criterion.areInEqualOrder(first, second) {
+                    continue
+                }
+                
+                return criterion.areInIncreasingOrder(first, second)
+            }
+            
+            return false
+        }
+        
+        return self.max(by: areInIncreasingOrder)
+    }
+}
 }
