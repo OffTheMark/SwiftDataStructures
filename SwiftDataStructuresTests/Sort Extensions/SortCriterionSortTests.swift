@@ -10,7 +10,7 @@ import XCTest
 @testable import SwiftDataStructures
 
 final class SortCriterionSortTests: XCTestCase {
-    // MARK: Sort a Sequence by Keypaths with Non-Nil Values
+    // MARK: Sort a Sequence by a Keypath with Non-Optional Value
     
     func test_SongsWithSameArtist_WhenSortingByArtist_ReturnsSongsInSameOrder() {
         // Given
@@ -46,7 +46,7 @@ final class SortCriterionSortTests: XCTestCase {
             Song(title: "Prove It", album: marqueeMoon),
             Song(title: "Torn Curtain", album: marqueeMoon)
         ]
-        let expectedSongs = [
+        let expected = [
             Song(title: "Venus", album: marqueeMoon),
             Song(title: "Torn Curtain", album: marqueeMoon),
             Song(title: "See No Evil", album: marqueeMoon),
@@ -61,78 +61,113 @@ final class SortCriterionSortTests: XCTestCase {
         let sorted = songs.sorted(by: \.title, order: .descending)
         
         // Then
-        assertThat(sorted, areEqualTo: expectedSongs)
+        assertThat(sorted, areEqualTo: expected)
     }
     
-    func test_SongsFromDifferentAlbums_WhenSortingByArtistAscendingAndAlbumYearDescending_ReturnsSongsInCorrectOrder() {
+    // MARK: Sort a Sequence by a Keypath with Optional Value
+    
+    func test_SongsWithSortIndex_WhenSortingBySortIndexAscending_ReturnsSongsInCorrectOrder() {
         // Given
+        let remainInLight = Album(title: "Remain in Light", artist: "Talking Heads", year: 1980)
         let songs = [
-            Song(
-                title: "Alternative Ulster",
-                album: Album(
-                    title: "Inflammable Material",
-                    artist: "Stiff Little Fingers",
-                    year: 1979
-                )
-            ),
-            Song(
-                title: "12XU",
-                album: Album(
-                    title: "Pink Flag",
-                    artist: "Wire",
-                    year: 1977
-                )
-            ),
-            Song(
-                title: "I Am the Fly",
-                album: Album(
-                    title: "Chairs Missing",
-                    artist: "Wire",
-                    year: 1978
-                )
-            ),
-            Song(
-                title: "Disorder",
-                album: Album(
-                    title: "Unknown Pleasures",
-                    artist: "Joy Division",
-                    year: 1979
-                )
-            )
+            Song(title: "Once in a Lifetime", album: remainInLight, trackNumber: 4),
+            Song(title: "The Great Curve", album: remainInLight, trackNumber: 3),
+            Song(title: "Listening Wind", album: remainInLight, trackNumber: 7),
+            Song(title: "The Overload", album: remainInLight, trackNumber: 8),
+            Song(title: "House in Motion", album: remainInLight, trackNumber: 5),
+            Song(title: "Born Under the Punches (The Heat Goes On)", album: remainInLight, trackNumber: 1),
+            Song(title: "Seen and Not Seen", album: remainInLight, trackNumber: 6),
+            Song(title: "Crosseyed and Painless", album: remainInLight, trackNumber: 2),
         ]
-        let expectedSongs = [
-            Song(
-                title: "Disorder",
-                album: Album(
-                    title: "Unknown Pleasures",
-                    artist: "Joy Division",
-                    year: 1979
-                )
-            ),
-            Song(
-                title: "Alternative Ulster",
-                album: Album(
-                    title: "Inflammable Material",
-                    artist: "Stiff Little Fingers",
-                    year: 1979
-                )
-            ),
-            Song(
-                title: "I Am the Fly",
-                album: Album(
-                    title: "Chairs Missing",
-                    artist: "Wire",
-                    year: 1978
-                )
-            ),
-            Song(
-                title: "12XU",
-                album: Album(
-                    title: "Pink Flag",
-                    artist: "Wire",
-                    year: 1977
-                )
-            )
+        let expected = [
+            Song(title: "Born Under the Punches (The Heat Goes On)", album: remainInLight, trackNumber: 1),
+            Song(title: "Crosseyed and Painless", album: remainInLight, trackNumber: 2),
+            Song(title: "The Great Curve", album: remainInLight, trackNumber: 3),
+            Song(title: "Once in a Lifetime", album: remainInLight, trackNumber: 4),
+            Song(title: "House in Motion", album: remainInLight, trackNumber: 5),
+            Song(title: "Seen and Not Seen", album: remainInLight, trackNumber: 6),
+            Song(title: "Listening Wind", album: remainInLight, trackNumber: 7),
+            Song(title: "The Overload", album: remainInLight, trackNumber: 8)
+        ]
+        
+        // When
+        let sorted = songs.sorted(by: \.trackNumber)
+        
+        // Then
+        assertThat(sorted, areEqualTo: expected)
+    }
+    
+    func test_SongsWithSomeHavingArtistsDifferentThanAlbumsAndSomeNot_WhenSortingBySongArtistDescending_ReturnsSongsInCorrectOrder() {
+        // Given
+        let stopMakingSense = Album(
+            title: "Stop Making Sense",
+            artist: "Talking Heads",
+            year: 1984
+        )
+        let randomAccessMemories = Album(
+            title: "Random Access Memories",
+            artist: "Daft Punk",
+            year: 2013
+        )
+        let songs = [
+            Song(title: "Burning Down the House", artist: nil, album: stopMakingSense, trackNumber: 6),
+            Song(title: "Genius of Love", artist: "Tom Tom Club", album: stopMakingSense, trackNumber: 13),
+            Song(title: "Beyond", artist: nil, album: randomAccessMemories, trackNumber: 9),
+            Song(title: "Instant Crush", artist: "Daft Punk; Julian Casablancas", album: randomAccessMemories, trackNumber: 5),
+            Song(title: "Take Me to the River", artist: nil, album: stopMakingSense, trackNumber: 15),
+            Song(title: "Slippery People", artist: nil, album: stopMakingSense, trackNumber: 5)
+        ]
+        let expected = [
+            Song(title: "Burning Down the House", artist: nil, album: stopMakingSense, trackNumber: 6),
+            Song(title: "Beyond", artist: nil, album: randomAccessMemories, trackNumber: 9),
+            Song(title: "Take Me to the River", artist: nil, album: stopMakingSense, trackNumber: 15),
+            Song(title: "Slippery People", artist: nil, album: stopMakingSense, trackNumber: 5),
+            Song(title: "Genius of Love", artist: "Tom Tom Club", album: stopMakingSense, trackNumber: 13),
+            Song(title: "Instant Crush", artist: "Daft Punk; Julian Casablancas", album: randomAccessMemories, trackNumber: 5)
+        ]
+        
+        // When
+        let sorted = songs.sorted(by: \.artist, order: .descending)
+        
+        // Then
+        assertThat(sorted, areEqualTo: expected)
+    }
+    
+    // MARK: Sort a Sequence by Multiple Criteria
+    
+    func test_SongsFromDifferentAlbums_WhenSortingByAlbumArtistAscendingAndAlbumYearDescending_ReturnsSongsInCorrectOrder() {
+        // Given
+        let inflammableMaterial = Album(
+            title: "Inflammable Material",
+            artist: "Stiff Little Fingers",
+            year: 1979
+        )
+        let pinkFlag = Album(
+            title: "Pink Flag",
+            artist: "Wire",
+            year: 1977
+        )
+        let chairsMissing = Album(
+            title: "Chairs Missing",
+            artist: "Wire",
+            year: 1978
+        )
+        let unknownPleasures = Album(
+            title: "Unknown Pleasures",
+            artist: "Joy Division",
+            year: 1979
+        )
+        let songs = [
+            Song(title: "Alternative Ulster", album: inflammableMaterial),
+            Song(title: "12XU", album: pinkFlag),
+            Song(title: "I Am the Fly", album: chairsMissing),
+            Song(title: "Disorder", album: unknownPleasures)
+        ]
+        let expected = [
+            Song(title: "Disorder", album: unknownPleasures),
+            Song(title: "Alternative Ulster", album: inflammableMaterial),
+            Song(title: "I Am the Fly", album: chairsMissing),
+            Song(title: "12XU", album: pinkFlag)
         ]
         
         // When
@@ -144,7 +179,7 @@ final class SortCriterionSortTests: XCTestCase {
         )
         
         // Then
-        assertThat(sorted, areEqualTo: expectedSongs)
+        assertThat(sorted, areEqualTo: expected)
     }
 }
 
@@ -183,11 +218,18 @@ fileprivate func assertThat(
 
 fileprivate struct Song {
     let title: String
+    let artist: String?
     let album: Album
     let trackNumber: Int?
     
-    init(title: String, album: Album, trackNumber: Int? = nil) {
+    init(
+        title: String,
+        artist: String? = nil,
+        album: Album,
+        trackNumber: Int? = nil
+    ) {
         self.title = title
+        self.artist = artist
         self.album = album
         self.trackNumber = trackNumber
     }
@@ -197,37 +239,11 @@ fileprivate struct Song {
 
 extension Song: Equatable {}
 
-// MARK: - Artist
-
-fileprivate struct Artist {
-    let name: String
-}
-
-// MARK: Equatable
-
-extension Artist: Equatable {}
-
-// MARK: ExpressibleByStringLiteral
-
-extension Artist: ExpressibleByStringLiteral {
-    init(stringLiteral value: String) {
-        self.init(name: value)
-    }
-}
-
-// MARK: Comparable
-
-extension Artist: Comparable {
-    static func < (lhs: Artist, rhs: Artist) -> Bool {
-        return lhs.name < rhs.name
-    }
-}
-
 // MARK: - Album
 
 fileprivate struct Album {
     let title: String
-    let artist: Artist
+    let artist: String
     let year: Int
 }
 
