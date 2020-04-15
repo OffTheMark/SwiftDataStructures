@@ -29,6 +29,7 @@
 		81B3A12124478A0500E9408E /* StackIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A12024478A0500E9408E /* StackIndexTests.swift */; };
 		81B3A12324478D8900E9408E /* QueueIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A12224478D8900E9408E /* QueueIndexTests.swift */; };
 		81B3A12624478F2800E9408E /* LinkedListDescriptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A12424478F2400E9408E /* LinkedListDescriptionTests.swift */; };
+		81B3A1282447922900E9408E /* DequeIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A1272447922900E9408E /* DequeIndexTests.swift */; };
 		OBJ_100 /* OrderedDictionaryIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* OrderedDictionaryIterateTests.swift */; };
 		OBJ_101 /* OrderedDictionaryMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* OrderedDictionaryMapTests.swift */; };
 		OBJ_102 /* OrderedDictionaryUpdateIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* OrderedDictionaryUpdateIndexTests.swift */; };
@@ -91,6 +92,7 @@
 		81B3A12024478A0500E9408E /* StackIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackIndexTests.swift; sourceTree = "<group>"; };
 		81B3A12224478D8900E9408E /* QueueIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueIndexTests.swift; sourceTree = "<group>"; };
 		81B3A12424478F2400E9408E /* LinkedListDescriptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListDescriptionTests.swift; sourceTree = "<group>"; };
+		81B3A1272447922900E9408E /* DequeIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DequeIndexTests.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_11 /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Deque.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				OBJ_27 /* DequeGetElementsTests.swift */,
 				OBJ_28 /* DequeRotateTests.swift */,
 				OBJ_29 /* DequeUpdateTests.swift */,
+				81B3A1272447922900E9408E /* DequeIndexTests.swift */,
 			);
 			path = Deque;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				OBJ_99 /* LinkedListUpdateTests.swift in Sources */,
 				OBJ_100 /* OrderedDictionaryIterateTests.swift in Sources */,
 				OBJ_101 /* OrderedDictionaryMapTests.swift in Sources */,
+				81B3A1282447922900E9408E /* DequeIndexTests.swift in Sources */,
 				81B3A11524476B8200E9408E /* BagIterateTests.swift in Sources */,
 				OBJ_102 /* OrderedDictionaryUpdateIndexTests.swift in Sources */,
 				81B3A12624478F2800E9408E /* LinkedListDescriptionTests.swift in Sources */,
