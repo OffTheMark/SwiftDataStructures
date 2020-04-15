@@ -369,7 +369,7 @@ extension LinkedList: ExpressibleByArrayLiteral {
 
 extension LinkedList: CustomStringConvertible {
     public var description: String {
-        let descriptionsOfElements = self.map({ String(describing: $0) })
+        let descriptionsOfElements = self.map({ String(reflecting: $0) })
         return "[" +  descriptionsOfElements.joined(separator: ", ") + "]"
     }
 }

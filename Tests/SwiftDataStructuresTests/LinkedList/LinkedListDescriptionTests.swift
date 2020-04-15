@@ -22,7 +22,7 @@ final class LinkedListDescriptionTests: XCTestCase {
     
     func test_ListWithElements_WhenGettingDescription_ReturnsEmptyDescription() {
         let elements: LinkedList = ["banana", "apple", "orange"]
-        let expectedDescription = "[\(String(describing: "banana")), \(String(describing: "apple")), \(String(describing: "orange"))]"
+        let expectedDescription = "[\(String(reflecting: "banana")), \(String(reflecting: "apple")), \(String(reflecting: "orange"))]"
         
         let description = elements.description
         
