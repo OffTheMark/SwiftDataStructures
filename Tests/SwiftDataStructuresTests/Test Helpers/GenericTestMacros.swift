@@ -1,11 +1,37 @@
 //
 //  GenericTestMacros.swift
-//  SwiftDataStructures
+//  SwiftDataStructuresTests
 //
 //  Created by Marc-Antoine Malépart on 2020-04-15.
 //
 
 import XCTest
+
+// MARK: Require a Value to Be Non-Bil
+
+struct RequireError<T>: LocalizedError {
+    let file: StaticString
+    let line: UInt
+    
+    var errorDescription: String? {
+        return "A required value of type \(T.self) was nil at line \(line) of file \(file)."
+    }
+}
+
+func require<T>(
+    _ expression: @autoclosure () -> T?,
+    file: StaticString = #file,
+    line: UInt = #line
+    ) throws -> T {
+    
+    guard let value = expression() else {
+        throw RequireError<T>(file: file, line: line)
+    }
+    
+    return value
+}
+
+// MARK: Assertions Concerning Collections
 
 func assertThat<C1: Collection, C2: Collection, Element>(
     _ collection: C1,

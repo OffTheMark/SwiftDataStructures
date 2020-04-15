@@ -25,6 +25,7 @@
 		81B3A1112447364200E9408E /* SortCriterionAreInIncreasingOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A1102447364200E9408E /* SortCriterionAreInIncreasingOrderTests.swift */; };
 		81B3A11524476B8200E9408E /* BagIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A11424476B8200E9408E /* BagIterateTests.swift */; };
 		81B3A11824476FA400E9408E /* GenericTestMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A11624476E0600E9408E /* GenericTestMacros.swift */; };
+		81B3A11B2447766B00E9408E /* BagIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A1192447765B00E9408E /* BagIndexTests.swift */; };
 		OBJ_100 /* OrderedDictionaryIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* OrderedDictionaryIterateTests.swift */; };
 		OBJ_101 /* OrderedDictionaryMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* OrderedDictionaryMapTests.swift */; };
 		OBJ_102 /* OrderedDictionaryUpdateIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* OrderedDictionaryUpdateIndexTests.swift */; };
@@ -83,6 +84,7 @@
 		81B3A1102447364200E9408E /* SortCriterionAreInIncreasingOrderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCriterionAreInIncreasingOrderTests.swift; sourceTree = "<group>"; };
 		81B3A11424476B8200E9408E /* BagIterateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagIterateTests.swift; sourceTree = "<group>"; };
 		81B3A11624476E0600E9408E /* GenericTestMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTestMacros.swift; sourceTree = "<group>"; };
+		81B3A1192447765B00E9408E /* BagIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagIndexTests.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_11 /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Deque.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				OBJ_24 /* BagSubscriptTests.swift */,
 				OBJ_25 /* BagUpdateTests.swift */,
 				81B3A11424476B8200E9408E /* BagIterateTests.swift */,
+				81B3A1192447765B00E9408E /* BagIndexTests.swift */,
 			);
 			path = Bag;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				OBJ_103 /* OrderedDictionaryUpdateTests.swift in Sources */,
 				OBJ_104 /* QueueGetElementsTests.swift in Sources */,
 				OBJ_105 /* QueueIterateTests.swift in Sources */,
+				81B3A11B2447766B00E9408E /* BagIndexTests.swift in Sources */,
 				OBJ_106 /* QueueUpdateTests.swift in Sources */,
 				OBJ_107 /* SortCriterionMinMaxTests.swift in Sources */,
 				OBJ_108 /* SortCriterionSortTests.swift in Sources */,

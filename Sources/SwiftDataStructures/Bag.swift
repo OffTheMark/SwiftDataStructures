@@ -290,14 +290,6 @@ extension Bag: Collection {
         return contents.count
     }
 
-    public var first: Element? {
-        let dictionaryElement = contents.first
-
-        return dictionaryElement.map({ key, value in
-            return (key, value)
-        })
-    }
-
     public var isEmpty: Bool {
         return contents.isEmpty
     }
@@ -321,6 +313,9 @@ extension Bag: Collection {
     
     // MARK: - Index
     
+    ///
+    /// The position of an item-count pair in a bag.
+    ///
     public struct Index {
         fileprivate let base: Dictionary<Item, Int>.Index
 
