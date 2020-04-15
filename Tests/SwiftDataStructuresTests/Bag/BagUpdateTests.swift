@@ -94,8 +94,17 @@ final class BagUpdateTests: XCTestCase {
         XCTAssertNil(removed)
     }
     
-    // MARK: Removing Elements in a Non-Empty Bag
+    // MARK: Removing Elements in a Bag
 
+    func test_EmptyBag_AfterRemovingAll_IsEmpty() {
+        var bag = Bag<String>()
+
+        bag.removeAll()
+        
+        XCTAssertTrue(bag.isEmpty)
+        XCTAssertEqual(bag, [:])
+    }
+    
     func test_BagWithOneOfAnItem_AfterRemovingOneOfItem_IsEmpty() {
         var bag: Bag = ["item"]
 
@@ -112,6 +121,15 @@ final class BagUpdateTests: XCTestCase {
 
         XCTAssertEqual(removed?.item, "item")
         XCTAssertEqual(removed?.count, 1)
+    }
+    
+    func test_BagWithOneOfAnItem_AfterRemovingAll_IsEmpty() {
+        var bag: Bag = ["item"]
+        
+        bag.removeAll()
+        
+        XCTAssertTrue(bag.isEmpty)
+        XCTAssertEqual(bag, [:])
     }
 
     func test_BagWithMultiplesOfAnItem_AfterRemovingLessThanCountOfItem_ContainsCorrectNumberOfItems() {
@@ -188,5 +206,14 @@ final class BagUpdateTests: XCTestCase {
         
         XCTAssertEqual(removed?.item, "item")
         XCTAssertEqual(removed?.count, 2)
+    }
+    
+    func test_BagWithMultipleItems_AfterRemovingAll_IsEmpty() {
+        var bag: Bag = ["item": 2, "otherItem": 3]
+        
+        bag.removeAll()
+        
+        XCTAssertTrue(bag.isEmpty)
+        XCTAssertEqual(bag, [:])
     }
 }
