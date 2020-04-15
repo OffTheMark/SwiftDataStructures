@@ -17,15 +17,25 @@ final class StackIndexTests: XCTestCase {
         
         // When
         let indices = elements.indices
+        
+        // Then
+        XCTAssertTrue(indices.isEmpty)
+    }
+    
+    func test_EmptyStack_WhenGettingFirstAndLastIndex_ReturnsSameIndex() {
+        // Given
+        let elements = Stack<String>()
+        
+        // When
         let startIndex = elements.startIndex
         let endIndex = elements.endIndex
         
         // Then
-        XCTAssertTrue(indices.isEmpty)
-        XCTAssertEqual(startIndex, endIndex)
+        XCTAssertEqual(startIndex, 0)
+        XCTAssertEqual(endIndex, 0)
     }
     
-    func test_StackWithElements_WhenGettingFirstndex_ReturnsCorrectIndex() {
+    func test_StackWithElements_WhenGettingFirstIndex_ReturnsCorrectIndex() {
         // Given
         let elements: Stack = ["banana", "apple", "orange", "strawberry"]
         
@@ -51,5 +61,18 @@ final class StackIndexTests: XCTestCase {
         
         // Then
         XCTAssertEqual(currentIndex, elements.endIndex)
+    }
+    
+    func test_StackWithElements_WhenGettingIndices_ReturnsExpectedIndices() {
+        // Given
+        let elements: Stack = ["banana", "apple", "orange", "strawberry"]
+        let expectedIndices = 0 ..< 4
+        
+        // When
+        let indices = elements.indices
+        
+        // Then
+        XCTAssertEqual(indices, expectedIndices)
+        XCTAssertEqual(indices, elements.startIndex ..< elements.endIndex)
     }
 }
