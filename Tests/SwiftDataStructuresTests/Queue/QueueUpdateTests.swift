@@ -39,7 +39,7 @@ final class QueueUpdateTests: XCTestCase {
         XCTAssertEqual(queue, [0, 1, 2, 3, 4, 5])
     }
     
-    // MARK: Removing Elements in a Non-Empty Queue
+    // MARK: Removing Elements from a Queue
     
     func test_QueueWithOneElement_AfterDequeuing_ReturnsElement() {
         var queue: Queue = [0]
@@ -53,6 +53,14 @@ final class QueueUpdateTests: XCTestCase {
         var queue: Queue = [0]
         
         queue.dequeue()
+        
+        XCTAssertEqual(queue, [])
+    }
+    
+    func test_QueueWithOneElement_AfterRemovingAll_IsEmpty() {
+        var queue: Queue = [0]
+        
+        queue.removeAll()
         
         XCTAssertEqual(queue, [])
     }
@@ -71,5 +79,13 @@ final class QueueUpdateTests: XCTestCase {
         queue.dequeue()
         
         XCTAssertEqual(queue, [1, 2])
+    }
+    
+    func test_QueueWithElements_AfterRemovingAll_IsEmpty() {
+        var queue: Queue = [0, 1, 2]
+        
+        queue.removeAll()
+        
+        XCTAssertEqual(queue, [])
     }
 }

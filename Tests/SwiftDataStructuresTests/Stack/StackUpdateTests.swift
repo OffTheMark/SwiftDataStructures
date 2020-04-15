@@ -31,7 +31,7 @@ final class StackUpdateTests: XCTestCase {
         XCTAssertEqual([0, 1], stack)
     }
     
-    func test_StackWithElements_AfterPushinNewElement_ContainsExistingElementsFollowedByNewElement() {
+    func test_StackWithElements_AfterPushingNewElement_ContainsExistingElementsFollowedByNewElement() {
         var stack: Stack = [0, 1, 2, 3, 4]
         
         stack.push(5)
@@ -39,7 +39,7 @@ final class StackUpdateTests: XCTestCase {
         XCTAssertEqual(stack, [0, 1, 2, 3, 4, 5])
     }
     
-    // MARK: Removing Elements from a Non-Empty Stack
+    // MARK: Removing Elements from a Stack
     
     func test_StackWithOneElement_AfterPopping_ReturnsElement() {
         var stack: Stack = [0]
@@ -53,6 +53,14 @@ final class StackUpdateTests: XCTestCase {
         var stack: Stack = [0]
         
         stack.pop()
+        
+        XCTAssertEqual(stack, [])
+    }
+    
+    func test_StackWithOneElement_AfterRemovingAll_IsEmpty() {
+        var stack: Stack = [0]
+        
+        stack.removeAll()
         
         XCTAssertEqual(stack, [])
     }
@@ -71,5 +79,13 @@ final class StackUpdateTests: XCTestCase {
         stack.pop()
         
         XCTAssertEqual(stack, [0, 1])
+    }
+    
+    func test_StackWithElements_AfterRemovingAll_IsEmpty() {
+        var stack: Stack = [0, 1, 2]
+        
+        stack.removeAll()
+        
+        XCTAssertEqual(stack, [])
     }
 }
