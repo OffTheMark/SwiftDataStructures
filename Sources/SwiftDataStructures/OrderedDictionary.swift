@@ -323,7 +323,7 @@ extension OrderedDictionary: Collection {
     
     // MARK: Accessing a Collection's Elements
     
-    public subscript(position: Int) -> (key: Key, value: Value) {
+    public subscript(position: Int) -> Element {
         get {
             precondition(indices.contains(position), "Index out of range.")
             
@@ -336,9 +336,6 @@ extension OrderedDictionary: Collection {
             precondition(indices.contains(position), "Index out of range.")
             
             replaceSubrange(position ..< position + 1, with: [newElement])
-        }
-        _modify {
-            yield &self[position]
         }
     }
 }
