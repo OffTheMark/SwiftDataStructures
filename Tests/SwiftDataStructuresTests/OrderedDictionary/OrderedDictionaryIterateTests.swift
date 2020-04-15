@@ -37,7 +37,7 @@ final class OrderedDictionaryIterateTests: XCTestCase {
         XCTAssertNil(elementPastEnd)
     }
     
-    // MARK: Iterating Over an Ardered Dictionary's Keys
+    // MARK: Iterating Over an Ordered Dictionary's Keys
     
     func test_EmptyDictionary_WhenIteratingOverKeys_ReturnsNoKeys() {
         let elements = OrderedDictionary<String, Int>()

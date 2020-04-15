@@ -290,7 +290,7 @@ extension Bag: Collection {
         return contents.count
     }
 
-    var first: Element? {
+    public var first: Element? {
         let dictionaryElement = contents.first
 
         return dictionaryElement.map({ key, value in
@@ -300,6 +300,14 @@ extension Bag: Collection {
 
     public var isEmpty: Bool {
         return contents.isEmpty
+    }
+    
+    public func index(forItem item: Item) -> Index? {
+        guard let base = contents.index(forKey: item) else {
+            return nil
+        }
+        
+        return Index(base)
     }
 
     // MARK: Accessing a Collection's Elements

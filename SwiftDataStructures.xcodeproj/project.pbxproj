@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		81B3A10F244733E400E9408E /* SortCriterion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A10E244733E400E9408E /* SortCriterion.swift */; };
 		81B3A1112447364200E9408E /* SortCriterionAreInIncreasingOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A1102447364200E9408E /* SortCriterionAreInIncreasingOrderTests.swift */; };
+		81B3A11524476B8200E9408E /* BagIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A11424476B8200E9408E /* BagIterateTests.swift */; };
+		81B3A11824476FA400E9408E /* GenericTestMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A11624476E0600E9408E /* GenericTestMacros.swift */; };
 		OBJ_100 /* OrderedDictionaryIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* OrderedDictionaryIterateTests.swift */; };
 		OBJ_101 /* OrderedDictionaryMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* OrderedDictionaryMapTests.swift */; };
 		OBJ_102 /* OrderedDictionaryUpdateIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* OrderedDictionaryUpdateIndexTests.swift */; };
@@ -79,6 +81,8 @@
 /* Begin PBXFileReference section */
 		81B3A10E244733E400E9408E /* SortCriterion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCriterion.swift; sourceTree = "<group>"; };
 		81B3A1102447364200E9408E /* SortCriterionAreInIncreasingOrderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCriterionAreInIncreasingOrderTests.swift; sourceTree = "<group>"; };
+		81B3A11424476B8200E9408E /* BagIterateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagIterateTests.swift; sourceTree = "<group>"; };
+		81B3A11624476E0600E9408E /* GenericTestMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTestMacros.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_11 /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Deque.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				OBJ_23 /* BagCountTests.swift */,
 				OBJ_24 /* BagSubscriptTests.swift */,
 				OBJ_25 /* BagUpdateTests.swift */,
+				81B3A11424476B8200E9408E /* BagIterateTests.swift */,
 			);
 			path = Bag;
 			sourceTree = "<group>";
@@ -254,7 +259,7 @@
 			path = Stack;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -263,7 +268,6 @@
 				OBJ_56 /* Products */,
 				OBJ_59 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_52 /* Test Data */ = {
@@ -277,6 +281,7 @@
 		OBJ_54 /* Test Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				81B3A11624476E0600E9408E /* GenericTestMacros.swift */,
 				OBJ_55 /* SongTestMacros.swift */,
 			);
 			path = "Test Helpers";
@@ -383,7 +388,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_56 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -433,11 +438,13 @@
 				OBJ_94 /* DequeRotateTests.swift in Sources */,
 				OBJ_95 /* DequeUpdateTests.swift in Sources */,
 				OBJ_96 /* ArrayExtensions.swift in Sources */,
+				81B3A11824476FA400E9408E /* GenericTestMacros.swift in Sources */,
 				OBJ_97 /* LinkedListGetElementsTests.swift in Sources */,
 				OBJ_98 /* LinkedListRangeReplaceTests.swift in Sources */,
 				OBJ_99 /* LinkedListUpdateTests.swift in Sources */,
 				OBJ_100 /* OrderedDictionaryIterateTests.swift in Sources */,
 				OBJ_101 /* OrderedDictionaryMapTests.swift in Sources */,
+				81B3A11524476B8200E9408E /* BagIterateTests.swift in Sources */,
 				OBJ_102 /* OrderedDictionaryUpdateIndexTests.swift in Sources */,
 				OBJ_103 /* OrderedDictionaryUpdateTests.swift in Sources */,
 				OBJ_104 /* QueueGetElementsTests.swift in Sources */,
