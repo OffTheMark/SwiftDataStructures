@@ -398,19 +398,19 @@ extension Bag.Index: Hashable {}
 // MARK: Comparable
 
 extension Bag.Index: Comparable {
-    public static func <= (lhs: Bag.Index, rhs: Bag.Index) -> Bool {
-        return lhs.base <= rhs.base
-    }
-
-    public static func >= (lhs: Bag.Index, rhs: Bag.Index) -> Bool {
-        return lhs.base >= rhs.base
-    }
-
     public static func < (lhs: Bag.Index, rhs: Bag.Index) -> Bool {
         return lhs.base < rhs.base
     }
 
     public static func > (lhs: Bag.Index, rhs: Bag.Index) -> Bool {
         return lhs.base > rhs.base
+    }
+    
+    public static func <= (lhs: Bag.Index, rhs: Bag.Index) -> Bool {
+        return lhs.base <= rhs.base
+    }
+
+    public static func >= (lhs: Bag.Index, rhs: Bag.Index) -> Bool {
+        return lhs.base >= rhs.base
     }
 }

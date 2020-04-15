@@ -64,4 +64,58 @@ final class BagIndexTests: XCTestCase {
         XCTAssertEqual(elementAtIndex.item, "orange")
         XCTAssertEqual(elementAtIndex.count, 5)
     }
+    
+    // MARK: Comparing Indices of a Bag
+    
+    func test_StartIndexOfBagWithElements_WhenCheckingIfIsLessThanFollowingIndex_ReturnsTrue() {
+        let elements: Bag = ["banana": 1, "apple": 3, "orange": 5, "strawberry": 6]
+        
+        XCTAssertTrue(elements.startIndex < elements.index(after: elements.startIndex))
+    }
+    
+    func test_StartIndexOfBagWithElements_WhenCheckingIfIsLessThanOrEqualToFollowingIndex_ReturnsTrue() {
+        let elements: Bag = ["banana": 1, "apple": 3, "orange": 5, "strawberry": 6]
+        
+        XCTAssertTrue(elements.startIndex <= elements.index(after: elements.startIndex))
+    }
+    
+    func test_StartIndexOfBagWithElements_WhenCheckingIfIsGreaterThanFollowingIndex_ReturnsFalse() {
+        let elements: Bag = ["banana": 1, "apple": 3, "orange": 5, "strawberry": 6]
+        
+        XCTAssertFalse(elements.startIndex > elements.index(after: elements.startIndex))
+    }
+    
+    func test_StartIndexOfBagWithElements_WhenCheckingIfIsGreaterThanOrEqualToFollowingIndex_ReturnsFalse() {
+        let elements: Bag = ["banana": 1, "apple": 3, "orange": 5, "strawberry": 6]
+        
+        XCTAssertFalse(elements.startIndex >= elements.index(after: elements.startIndex))
+    }
+    
+    func test_IndexOfBagWithElements_WhenCheckingIfIsLessThanPreviousIndexReturnsFalse() {
+        let elements: Bag = ["banana": 1, "apple": 3, "orange": 5, "strawberry": 6]
+        let index = elements.index(after: elements.startIndex)
+        
+        XCTAssertFalse(index < elements.startIndex)
+    }
+    
+    func test_IndexOfBagWithElements_WhenCheckingIfIsLessThanOrEqualToPreviousIndex_ReturnsFalse() {
+        let elements: Bag = ["banana": 1, "apple": 3, "orange": 5, "strawberry": 6]
+        let index = elements.index(after: elements.startIndex)
+        
+        XCTAssertFalse(index <= elements.startIndex)
+    }
+    
+    func test_IndexOfBagWithElements_WhenCheckingIfIsGreaterThanPreviousIndex_ReturnsTrue() {
+        let elements: Bag = ["banana": 1, "apple": 3, "orange": 5, "strawberry": 6]
+        let index = elements.index(after: elements.startIndex)
+        
+        XCTAssertTrue(index > elements.startIndex)
+    }
+    
+    func test_IndexOfBagWithElements_WhenCheckingIfIsGreaterThanOrEqualToPreviousIndex_ReturnsTrue() {
+        let elements: Bag = ["banana": 1, "apple": 3, "orange": 5, "strawberry": 6]
+        let index = elements.index(after: elements.startIndex)
+        
+        XCTAssertTrue(index >= elements.startIndex)
+    }
 }
