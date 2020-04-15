@@ -17,12 +17,12 @@ final class BagIndexTests: XCTestCase {
         
         // When
         let indices = elements.indices
-        let firstIndex = elements.startIndex
+        let startIndex = elements.startIndex
         let endIndex = elements.endIndex
         
         // Then
         XCTAssertTrue(indices.isEmpty)
-        XCTAssertEqual(firstIndex, endIndex)
+        XCTAssertEqual(startIndex, endIndex)
     }
     
     func test_BagWithElements_WhenGettingLastIndex_ReturnsCorrectIndex() {

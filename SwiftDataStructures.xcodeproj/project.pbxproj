@@ -26,6 +26,8 @@
 		81B3A11524476B8200E9408E /* BagIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A11424476B8200E9408E /* BagIterateTests.swift */; };
 		81B3A11824476FA400E9408E /* GenericTestMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A11624476E0600E9408E /* GenericTestMacros.swift */; };
 		81B3A11B2447766B00E9408E /* BagIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A1192447765B00E9408E /* BagIndexTests.swift */; };
+		81B3A12124478A0500E9408E /* StackIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A12024478A0500E9408E /* StackIndexTests.swift */; };
+		81B3A12324478D8900E9408E /* QueueIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3A12224478D8900E9408E /* QueueIndexTests.swift */; };
 		OBJ_100 /* OrderedDictionaryIterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* OrderedDictionaryIterateTests.swift */; };
 		OBJ_101 /* OrderedDictionaryMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* OrderedDictionaryMapTests.swift */; };
 		OBJ_102 /* OrderedDictionaryUpdateIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* OrderedDictionaryUpdateIndexTests.swift */; };
@@ -85,6 +87,8 @@
 		81B3A11424476B8200E9408E /* BagIterateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagIterateTests.swift; sourceTree = "<group>"; };
 		81B3A11624476E0600E9408E /* GenericTestMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTestMacros.swift; sourceTree = "<group>"; };
 		81B3A1192447765B00E9408E /* BagIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagIndexTests.swift; sourceTree = "<group>"; };
+		81B3A12024478A0500E9408E /* StackIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackIndexTests.swift; sourceTree = "<group>"; };
+		81B3A12224478D8900E9408E /* QueueIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueIndexTests.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_11 /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Deque.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 				OBJ_42 /* QueueGetElementsTests.swift */,
 				OBJ_43 /* QueueIterateTests.swift */,
 				OBJ_44 /* QueueUpdateTests.swift */,
+				81B3A12224478D8900E9408E /* QueueIndexTests.swift */,
 			);
 			path = Queue;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				OBJ_49 /* StackGetElementsTests.swift */,
 				OBJ_50 /* StackIterateTests.swift */,
 				OBJ_51 /* StackUpdateTests.swift */,
+				81B3A12024478A0500E9408E /* StackIndexTests.swift */,
 			);
 			path = Stack;
 			sourceTree = "<group>";
@@ -440,6 +446,7 @@
 				OBJ_93 /* DequeGetElementsTests.swift in Sources */,
 				OBJ_94 /* DequeRotateTests.swift in Sources */,
 				OBJ_95 /* DequeUpdateTests.swift in Sources */,
+				81B3A12124478A0500E9408E /* StackIndexTests.swift in Sources */,
 				OBJ_96 /* ArrayExtensions.swift in Sources */,
 				81B3A11824476FA400E9408E /* GenericTestMacros.swift in Sources */,
 				OBJ_97 /* LinkedListGetElementsTests.swift in Sources */,
@@ -450,6 +457,7 @@
 				81B3A11524476B8200E9408E /* BagIterateTests.swift in Sources */,
 				OBJ_102 /* OrderedDictionaryUpdateIndexTests.swift in Sources */,
 				OBJ_103 /* OrderedDictionaryUpdateTests.swift in Sources */,
+				81B3A12324478D8900E9408E /* QueueIndexTests.swift in Sources */,
 				OBJ_104 /* QueueGetElementsTests.swift in Sources */,
 				OBJ_105 /* QueueIterateTests.swift in Sources */,
 				81B3A11B2447766B00E9408E /* BagIndexTests.swift in Sources */,
