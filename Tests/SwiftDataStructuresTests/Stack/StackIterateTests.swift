@@ -19,14 +19,14 @@ final class StackIterateTests: XCTestCase {
         XCTAssertNil(iterator.next())
     }
     
-    func test_StackWithElements_WhenIteratingOverElements_ReturnsElementsInExpectedOrder() {
+    func test_StackWithElements_WhenIteratingOverElements_ReturnsElementsInReversedOrderTheyWereAdded() {
         let elements: Stack = [4, 3, 2, 1]
         var iterator = elements.makeIterator()
         
-        XCTAssertEqual(iterator.next(), 4)
-        XCTAssertEqual(iterator.next(), 3)
-        XCTAssertEqual(iterator.next(), 2)
         XCTAssertEqual(iterator.next(), 1)
+        XCTAssertEqual(iterator.next(), 2)
+        XCTAssertEqual(iterator.next(), 3)
+        XCTAssertEqual(iterator.next(), 4)
         XCTAssertNil(iterator.next())
     }
 }

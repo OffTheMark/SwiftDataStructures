@@ -71,24 +71,24 @@ final class StackGetElementsTests: XCTestCase {
         XCTAssertEqual(peeked, 0)
     }
     
-    func test_StackWithElements_WhenGettingFirst_ReturnsOnlyElement() {
+    func test_StackWithElements_WhenGettingFirst_ReturnsLastAddedElement() {
         let stack: Stack = [3, 2, 1, 0]
         
-        XCTAssertEqual(stack.first, 3)
+        XCTAssertEqual(stack.first, 0)
     }
     
-    func test_StackWithElements_WhenGettingLast_ReturnsOnlyElement() {
+    func test_StackWithElements_WhenGettingLast_ReturnsFirstAddedElement() {
         let stack: Stack = [3, 2, 1, 0]
         
-        XCTAssertEqual(stack.last, 0)
+        XCTAssertEqual(stack.last, 3)
     }
     
     func test_StackWithElements_WhenGettingElementsByIndex_ReturnsExpectedElements() {
         let stack: Stack = [3, 2, 1, 0]
         
-        XCTAssertEqual(stack[0], 3)
-        XCTAssertEqual(stack[1], 2)
-        XCTAssertEqual(stack[2], 1)
-        XCTAssertEqual(stack[3], 0)
+        XCTAssertEqual(stack[0], 0)
+        XCTAssertEqual(stack[1], 1)
+        XCTAssertEqual(stack[2], 2)
+        XCTAssertEqual(stack[3], 3)
     }
 }
