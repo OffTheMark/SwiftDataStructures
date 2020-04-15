@@ -26,7 +26,7 @@ public struct Stack<Element> {
     // MARK: Accessing Elements
     
     public func peek() -> Element? {
-        return first
+        return last
     }
     
     // MARK: Adding Elements
@@ -53,14 +53,14 @@ extension Stack: Sequence {
     public typealias Element = Element
     
     public __consuming func makeIterator() -> Iterator {
-        let base = contents.reversed().makeIterator()
+        let base = contents.makeIterator()
         return Iterator(base)
     }
     
     public struct Iterator: IteratorProtocol {
-        private var base: ReversedCollection<LinkedList<Element>>.Iterator
+        private var base: LinkedList<Element>.Iterator
         
-        fileprivate init(_ base: ReversedCollection<LinkedList<Element>>.Iterator) {
+        fileprivate init(_ base: LinkedList<Element>.Iterator) {
             self.base = base
         }
         
@@ -78,8 +78,7 @@ extension Stack: Collection {
     // MARK: Accessing a Collection's Elements
     
     public subscript(position: Int) -> Element {
-        let reversedPosition = endIndex - position - 1
-        return contents[reversedPosition]
+        return contents[position]
     }
     
     // MARK: Manipulating Indices
@@ -107,7 +106,7 @@ extension Stack: Collection {
     }
 
     public var first: Element? {
-        return contents.last
+        return contents.first
     }
 
     public var isEmpty: Bool {
@@ -119,7 +118,7 @@ extension Stack: Collection {
 
 extension Stack: BidirectionalCollection {
     public var last: Element? {
-        return contents.first
+        return contents.last
     }
 
     public func index(before i: Int) -> Int {
@@ -157,6 +156,6 @@ extension Stack: ExpressibleByArrayLiteral {
 
 extension Stack: CustomStringConvertible {
     public var description: String {
-        return String(describing: contents.reversed())
+        return String(describing: contents)
     }
 }

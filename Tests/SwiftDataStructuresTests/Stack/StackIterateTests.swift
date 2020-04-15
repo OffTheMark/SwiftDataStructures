@@ -23,10 +23,10 @@ final class StackIterateTests: XCTestCase {
         let elements: Stack = [4, 3, 2, 1]
         var iterator = elements.makeIterator()
         
-        XCTAssertEqual(iterator.next(), 1)
-        XCTAssertEqual(iterator.next(), 2)
-        XCTAssertEqual(iterator.next(), 3)
         XCTAssertEqual(iterator.next(), 4)
+        XCTAssertEqual(iterator.next(), 3)
+        XCTAssertEqual(iterator.next(), 2)
+        XCTAssertEqual(iterator.next(), 1)
         XCTAssertNil(iterator.next())
     }
 }
