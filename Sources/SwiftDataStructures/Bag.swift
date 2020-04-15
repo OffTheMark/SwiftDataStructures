@@ -243,7 +243,8 @@ extension Bag: Sequence {
     public typealias Element = (item: Item, count: Int)
 
     public __consuming func makeIterator() -> Iterator {
-        return Iterator(contents.makeIterator())
+        let base = contents.makeIterator()
+        return Iterator(base)
     }
     
     public struct Iterator: IteratorProtocol {
@@ -266,20 +267,21 @@ extension Bag: Sequence {
 // MARK: Collection
 
 extension Bag: Collection {
-    public typealias Index = BagIndex<Item>
-
     // MARK: Manipulating Indices
 
     public var startIndex: Index {
-        return BagIndex(contents.startIndex)
+        let base = contents.startIndex
+        return Index(base)
     }
 
     public var endIndex: Index {
-        return BagIndex(contents.endIndex)
+        let base = contents.endIndex
+        return Index(base)
     }
 
     public func index(after i: Index) -> Index {
-        return Index(contents.index(after: i.base))
+        let base = contents.index(after: i.base)
+        return Index(base)
     }
 
     // MARK: Instance Properties
@@ -308,7 +310,19 @@ extension Bag: Collection {
         let dictionaryElement = contents[position.base]
         return (dictionaryElement.key, dictionaryElement.value)
     }
+    
+    // MARK: - Index
+    
+    public struct Index {
+        fileprivate let base: Dictionary<Item, Int>.Index
+
+        fileprivate init(_ dictionaryIndex: Dictionary<Item, Int>.Index) {
+            self.base = dictionaryIndex
+        }
+    }
 }
+
+// MARK: - Bag
 
 // MARK: CustomStringConvertible
 
@@ -372,36 +386,28 @@ extension Bag.Items: Sequence {
     }
 }
 
-// MARK: - BagIndex
-
-public struct BagIndex<Element: Hashable> {
-    fileprivate let base: Dictionary<Element, Int>.Index
-
-    fileprivate init(_ dictionaryIndex: Dictionary<Element, Int>.Index) {
-        self.base = dictionaryIndex
-    }
-}
+// MARK: - Bag.Index
 
 // MARK: Equatable
 
-extension BagIndex: Equatable {}
+extension Bag.Index: Hashable {}
 
 // MARK: Comparable
 
-extension BagIndex: Comparable {
-    public static func <= (lhs: BagIndex, rhs: BagIndex) -> Bool {
+extension Bag.Index: Comparable {
+    public static func <= (lhs: Bag.Index, rhs: Bag.Index) -> Bool {
         return lhs.base <= rhs.base
     }
 
-    public static func >= (lhs: BagIndex, rhs: BagIndex) -> Bool {
+    public static func >= (lhs: Bag.Index, rhs: Bag.Index) -> Bool {
         return lhs.base >= rhs.base
     }
 
-    public static func < (lhs: BagIndex, rhs: BagIndex) -> Bool {
+    public static func < (lhs: Bag.Index, rhs: Bag.Index) -> Bool {
         return lhs.base < rhs.base
     }
 
-    public static func > (lhs: BagIndex, rhs: BagIndex) -> Bool {
+    public static func > (lhs: Bag.Index, rhs: Bag.Index) -> Bool {
         return lhs.base > rhs.base
     }
 }
