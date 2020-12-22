@@ -32,6 +32,10 @@ public struct Deque<Element> {
     public mutating func append(_ value: Element) {
         contents.append(value)
     }
+    
+    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Element {
+        contents.append(contentsOf: newElements)
+    }
 
     // MARK: Removing Elements
 
