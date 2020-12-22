@@ -181,6 +181,18 @@ extension Deque: MutableCollection {
     }
 }
 
+// MARK: RangeReplaceableCollection
+
+extension Deque: RangeReplaceableCollection {
+    public mutating func replaceSubrange<S: Sequence>(_ subrange: Range<Index>, with newElements: __owned S) where Element == S.Element {
+        contents.replaceSubrange(subrange, with: newElements)
+    }
+}
+
+// MARK: RandomAccessCollection
+
+extension Deque: RandomAccessCollection {}
+
 // MARK: Hashable
 
 extension Deque: Hashable where Element: Hashable {}

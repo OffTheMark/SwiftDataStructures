@@ -199,7 +199,7 @@ extension LinkedList: MutableCollection {
 // MARK: RangeReplaceableCollection
 
 extension LinkedList: RangeReplaceableCollection {
-    public mutating func replaceSubrange<S: Sequence>(_ subrange: Range<Int>, with newElements: __owned S) where Element == S.Element {
+    public mutating func replaceSubrange<S: Sequence>(_ subrange: Range<Index>, with newElements: __owned S) where Element == S.Element {
         precondition(subrange.lowerBound >= startIndex, "Subrange bounds are out of range.")
         precondition(subrange.upperBound <= endIndex, "Subrange bounds are out of range.")
         
@@ -338,6 +338,10 @@ extension LinkedList: RangeReplaceableCollection {
         }
     }
 }
+
+// MARK: RandomAccessCollection
+
+extension LinkedList: RandomAccessCollection {}
 
 // MARK: Hashable
 
