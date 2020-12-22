@@ -177,21 +177,13 @@ extension Deque: MutableCollection {
     }
 }
 
+// MARK: Hashable
+
+extension Deque: Hashable where Element: Hashable {}
+
 // MARK: Equatable
 
-extension Deque: Equatable where Element: Equatable {
-    public static func == (lhs: Deque<Element>, rhs: Deque<Element>) -> Bool {
-        guard lhs.count == rhs.count else {
-            return false
-        }
-
-        let elementPairs = zip(lhs, rhs)
-
-        return elementPairs.allSatisfy({ left, right in
-            return left == right
-        })
-    }
-}
+extension Deque: Equatable where Element: Equatable {}
 
 // MARK: ExpressibleByArrayLiteral
 

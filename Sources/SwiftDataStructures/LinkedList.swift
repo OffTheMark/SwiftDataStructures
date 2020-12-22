@@ -339,6 +339,18 @@ extension LinkedList: RangeReplaceableCollection {
     }
 }
 
+// MARK: Hashable
+
+extension LinkedList: Hashable where Element: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(count)
+        
+        for value in self {
+            hasher.combine(value)
+        }
+    }
+}
+
 // MARK: Equatable
 
 extension LinkedList: Equatable where Element: Equatable {
