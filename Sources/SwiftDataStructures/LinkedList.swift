@@ -52,7 +52,7 @@ public struct LinkedList<Element> {
 
         return currentNode
     }
-
+    
     private mutating func copyNodes() {
         guard var currentExistingNode = head else {
             return
@@ -257,8 +257,8 @@ extension LinkedList: RangeReplaceableCollection {
         let nodeAtChainHead = node(at: subrange.lowerBound)
         let nodeAfterChainTail = node(at: subrange.upperBound)
         
-        nodeAfterChainTail.previous = chain.tail
         nodeAtChainHead.previous?.next = chain.head
+        nodeAfterChainTail.previous = chain.tail
     }
     
     private mutating func removeElements(at range: Range<Int>) {
