@@ -73,30 +73,25 @@ extension Stack: Sequence {
 // MARK: Collection
 
 extension Stack: Collection {
-    public typealias Index = Int
-    
     // MARK: Accessing a Collection's Elements
     
-    public subscript(position: Int) -> Element {
-        return contents[position]
+    public subscript(position: Index) -> Element {
+        return contents[position.base]
     }
     
     // MARK: Manipulating Indices
     
-    public var startIndex: Int {
-        return contents.startIndex
+    public var startIndex: Index {
+        Index(contents.startIndex)
     }
 
-    public var endIndex: Int {
-        return contents.endIndex
+    public var endIndex: Index {
+        Index(contents.endIndex)
     }
 
-    public var indices: Range<Int> {
-        return contents.indices
-    }
-
-    public func index(after i: Int) -> Int {
-        return contents.index(after: i)
+    public func index(after i: Index) -> Index {
+        let base = contents.index(after: i.base)
+        return Index(base)
     }
 
     // MARK: Instance Properties
@@ -112,6 +107,14 @@ extension Stack: Collection {
     public var isEmpty: Bool {
         return contents.isEmpty
     }
+    
+    public struct Index {
+        fileprivate let base: LinkedList<Element>.Index
+        
+        fileprivate init(_ base: LinkedList<Element>.Index) {
+            self.base = base
+        }
+    }
 }
 
 // MARK: BidirectionalCollection
@@ -121,8 +124,9 @@ extension Stack: BidirectionalCollection {
         return contents.last
     }
 
-    public func index(before i: Int) -> Int {
-        return contents.index(before: i)
+    public func index(before i: Index) -> Index {
+        let base = contents.index(before: i.base)
+        return Index(base)
     }
 }
 
@@ -157,5 +161,19 @@ extension Stack: ExpressibleByArrayLiteral {
 extension Stack: CustomStringConvertible {
     public var description: String {
         return String(describing: contents)
+    }
+}
+
+// MARK: - Stack.Index
+
+// MARK: Comparable
+
+extension Stack.Index: Comparable {
+    public static func < (lhs: Self, rhs: Self) -> Bool {
+        lhs.base < rhs.base
+    }
+    
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.base == rhs.base
     }
 }

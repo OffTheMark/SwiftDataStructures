@@ -60,7 +60,7 @@ final class QueueGetElementsTests: XCTestCase {
     func test_QueueWithOneElement_WhenGettingElementsByIndex_ReturnsExpectedElements() {
         let queue: Queue = [0]
         
-        XCTAssertEqual(queue[0], 0)
+        XCTAssertEqual(queue[queue.startIndex], 0)
     }
 
     func test_QueueWithElements_WhenPeeking_ReturnsFirstElement() {
@@ -86,9 +86,9 @@ final class QueueGetElementsTests: XCTestCase {
     func test_QueueWithElements_WhenGettingElementsByIndex_ReturnsExpectedElements() {
         let queue: Queue = [3, 2, 1, 0]
         
-        XCTAssertEqual(queue[0], 3)
-        XCTAssertEqual(queue[1], 2)
-        XCTAssertEqual(queue[2], 1)
-        XCTAssertEqual(queue[3], 0)
+        XCTAssertEqual(queue[queue.startIndex], 3)
+        XCTAssertEqual(queue[queue.index(after: queue.startIndex)], 2)
+        XCTAssertEqual(queue[queue.index(queue.startIndex, offsetBy: 2)], 1)
+        XCTAssertEqual(queue[queue.index(queue.startIndex, offsetBy: 3)], 0)
     }
 }

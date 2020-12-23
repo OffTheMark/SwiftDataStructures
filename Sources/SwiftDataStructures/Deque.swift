@@ -119,24 +119,21 @@ extension Deque: Sequence {
 // MARK: Collection
 
 extension Deque: Collection {
-    public typealias Index = Int
-
     // MARK: Manipulating Indices
 
-    public var startIndex: Int {
-        return contents.startIndex
+    public var startIndex: Index {
+        let base = contents.startIndex
+        return Index(base)
     }
 
-    public var endIndex: Int {
-        return contents.endIndex
+    public var endIndex: Index {
+        let base = contents.endIndex
+        return Index(base)
     }
 
-    public var indices: Range<Int> {
-        return contents.indices
-    }
-
-    public func index(after i: Int) -> Int {
-        return contents.index(after: i)
+    public func index(after i: Index) -> Index {
+        let base = contents.index(after: i.base)
+        return Index(base)
     }
 
     // MARK: Instance Properties
@@ -152,6 +149,13 @@ extension Deque: Collection {
     public var isEmpty: Bool {
         return contents.isEmpty
     }
+    public struct Index {
+        fileprivate let base: LinkedList<Element>.Index
+        
+        fileprivate init(_ base: LinkedList<Element>.Index) {
+            self.base = base
+        }
+    }
 }
 
 // MARK: BidirectionalCollection
@@ -161,8 +165,9 @@ extension Deque: BidirectionalCollection {
         return contents.last
     }
 
-    public func index(before i: Int) -> Int {
-        return contents.index(before: i)
+    public func index(before i: Index) -> Index {
+        let base = contents.index(before: i.base)
+        return Index(base)
     }
 }
 
@@ -171,12 +176,12 @@ extension Deque: BidirectionalCollection {
 extension Deque: MutableCollection {
     // MARK: Accessing a Collection's Elements
 
-    public subscript(position: Int) -> Element {
+    public subscript(position: Index) -> Element {
         get {
-            return contents[position]
+            return contents[position.base]
         }
         set {
-            contents[position] = newValue
+            contents[position.base] = newValue
         }
     }
 }
@@ -185,7 +190,8 @@ extension Deque: MutableCollection {
 
 extension Deque: RangeReplaceableCollection {
     public mutating func replaceSubrange<S: Sequence>(_ subrange: Range<Index>, with newElements: __owned S) where Element == S.Element {
-        contents.replaceSubrange(subrange, with: newElements)
+        let baseSubrange = subrange.lowerBound.base ..< subrange.upperBound.base
+        contents.replaceSubrange(baseSubrange, with: newElements)
     }
 }
 
@@ -216,5 +222,19 @@ extension Deque: ExpressibleByArrayLiteral {
 extension Deque: CustomStringConvertible {
     public var description: String {
         return "[" + lazy.map({ "\($0)" }).joined(separator: ", ") + "]"
+    }
+}
+
+// MARK: - Deque.Index
+
+// MARK: Comparable
+
+extension Deque.Index: Comparable {
+    public static func < (lhs: Self, rhs: Self) -> Bool {
+        lhs.base < rhs.base
+    }
+    
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.base == rhs.base
     }
 }

@@ -34,11 +34,11 @@ final class LinkedListGetElementsTests: XCTestCase {
     func test_ListWithElements_WhenGettingElementByIndex_ReturnsExpectedElements() {
         let list: LinkedList = [4, 3, 2, 1, 0]
 
-        XCTAssertEqual(list[0], 4)
-        XCTAssertEqual(list[1], 3)
-        XCTAssertEqual(list[2], 2)
-        XCTAssertEqual(list[3], 1)
-        XCTAssertEqual(list[4], 0)
+        XCTAssertEqual(list[list.startIndex], 4)
+        XCTAssertEqual(list[list.index(list.startIndex, offsetBy: 1)], 3)
+        XCTAssertEqual(list[list.index(list.startIndex, offsetBy: 2)], 2)
+        XCTAssertEqual(list[list.index(list.startIndex, offsetBy: 3)], 1)
+        XCTAssertEqual(list[list.index(list.startIndex, offsetBy: 4)], 0)
     }
 
     // MARK: Set Element at Position
@@ -46,7 +46,7 @@ final class LinkedListGetElementsTests: XCTestCase {
     func test_ListWithElements_AfterSettingElementAtSubscriptToNewValue_ContainsExistingElementsWithElementAtSubscriptChanged() {
         var list: LinkedList = [1, 2, 3, 4, 5]
 
-        list[2] = 6
+        list[list.index(list.startIndex, offsetBy: 2)] = 6
 
         XCTAssertEqual(list, [1, 2, 6, 4, 5])
     }
@@ -55,7 +55,7 @@ final class LinkedListGetElementsTests: XCTestCase {
         let original: LinkedList = [1, 2, 3, 4, 5]
         var copy = original
 
-        copy[2] = 6
+        copy[copy.index(copy.startIndex, offsetBy: 2)] = 6
 
         XCTAssertEqual(original, [1, 2, 3, 4, 5])
         XCTAssertEqual(copy, [1, 2, 6, 4, 5])

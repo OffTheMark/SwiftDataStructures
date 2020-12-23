@@ -72,30 +72,27 @@ extension Queue: Sequence {
 // MARK: Collection
 
 extension Queue: Collection {
-    public typealias Index = Int
-    
     // MARK: Accessing a Collection's Elements
     
-    public subscript(position: Int) -> Element {
-        return contents[position]
+    public subscript(position: Index) -> Element {
+        contents[position.base]
     }
     
     // MARK: Manipulating Indices
     
-    public var startIndex: Int {
-        return contents.startIndex
+    public var startIndex: Index {
+        let base = contents.startIndex
+        return Index(base)
     }
 
-    public var endIndex: Int {
-        return contents.endIndex
+    public var endIndex: Index {
+        let base = contents.endIndex
+        return Index(base)
     }
 
-    public var indices: Range<Int> {
-        return contents.indices
-    }
-
-    public func index(after i: Int) -> Int {
-        return contents.index(after: i)
+    public func index(after i: Index) -> Index {
+        let base = contents.index(after: i.base)
+        return Index(base)
     }
 
     // MARK: Instance Properties
@@ -111,6 +108,14 @@ extension Queue: Collection {
     public var isEmpty: Bool {
         return contents.isEmpty
     }
+    
+    public struct Index {
+        fileprivate let base: LinkedList<Element>.Index
+        
+        fileprivate init(_ base: LinkedList<Element>.Index) {
+            self.base = base
+        }
+    }
 }
 
 // MARK: BidirectionalCollection
@@ -120,8 +125,9 @@ extension Queue: BidirectionalCollection {
         return contents.last
     }
 
-    public func index(before i: Int) -> Int {
-        return contents.index(before: i)
+    public func index(before i: Index) -> Index {
+        let base = contents.index(before: i.base)
+        return Index(base)
     }
 }
 
@@ -156,5 +162,19 @@ extension Queue: ExpressibleByArrayLiteral {
 extension Queue: CustomStringConvertible {
     public var description: String {
         return String(describing: contents)
+    }
+}
+
+// MARK: - Queue.Index
+
+// MARK: Comparable
+
+extension Queue.Index: Comparable {
+    public static func < (lhs: Self, rhs: Self) -> Bool {
+        lhs.base < rhs.base
+    }
+    
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.base == rhs.base
     }
 }

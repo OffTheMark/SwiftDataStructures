@@ -34,11 +34,11 @@ final class DequeGetElementsTests: XCTestCase {
     func test_DequeWithElements_WhenGettingElementByIndex_ReturnsExpectedElements() {
         let deque: Deque = [4, 3, 2, 1, 0]
 
-        XCTAssertEqual(deque[0], 4)
-        XCTAssertEqual(deque[1], 3)
-        XCTAssertEqual(deque[2], 2)
-        XCTAssertEqual(deque[3], 1)
-        XCTAssertEqual(deque[4], 0)
+        XCTAssertEqual(deque[deque.startIndex], 4)
+        XCTAssertEqual(deque[deque.index(deque.startIndex, offsetBy: 1)], 3)
+        XCTAssertEqual(deque[deque.index(deque.startIndex, offsetBy: 2)], 2)
+        XCTAssertEqual(deque[deque.index(deque.startIndex, offsetBy: 3)], 1)
+        XCTAssertEqual(deque[deque.index(deque.startIndex, offsetBy: 4)], 0)
     }
 
     // MARK: Set Element at Position
@@ -46,7 +46,8 @@ final class DequeGetElementsTests: XCTestCase {
     func test_DequeWithElements_AfterSettingElementAtSubscriptToNewValue_ContainsExistingElementsWithElementAtSubscriptChanged() {
         var deque: Deque = [1, 2, 3, 4, 5]
 
-        deque[2] = 6
+        let index = deque.index(deque.startIndex, offsetBy: 2)
+        deque[index] = 6
 
         XCTAssertEqual(deque, [1, 2, 6, 4, 5])
     }
@@ -55,7 +56,8 @@ final class DequeGetElementsTests: XCTestCase {
         let original: Deque = [1, 2, 3, 4, 5]
         var copy = original
 
-        copy[2] = 6
+        let index = copy.index(copy.startIndex, offsetBy: 2)
+        copy[index] = 6
 
         XCTAssertEqual(original, [1, 2, 3, 4, 5])
         XCTAssertEqual(copy, [1, 2, 6, 4, 5])
