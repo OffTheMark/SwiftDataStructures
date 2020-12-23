@@ -257,8 +257,11 @@ extension LinkedList: RangeReplaceableCollection {
         let nodeAtChainHead = node(at: subrange.lowerBound)
         let nodeAfterChainTail = node(at: subrange.upperBound)
         
+        chain.head?.previous = nodeAtChainHead.previous
         nodeAtChainHead.previous?.next = chain.head
+        
         nodeAfterChainTail.previous = chain.tail
+        chain.tail?.next = nodeAfterChainTail
     }
     
     private mutating func removeElements(at range: Range<Int>) {

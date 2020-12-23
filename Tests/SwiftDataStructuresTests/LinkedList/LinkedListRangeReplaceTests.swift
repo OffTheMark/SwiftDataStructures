@@ -285,4 +285,17 @@ final class LinkedListRangeReplaceTests: XCTestCase {
         XCTAssertEqual(copy.count, 12)
         XCTAssertEqual(copy, [0, 1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15])
     }
+    
+    // MARK: Inserting Elements in the Middle
+    
+    func test_insertAt_ifMultipleElementsAreInsertedInTheMiddle_containsExpectedElements() {
+        var list = LinkedList(0..<5)
+        
+        list.insert(5, at: 1)
+        list.insert(6, at: 2)
+        list.insert(7, at: 3)
+        
+        XCTAssertEqual(list.count, 8)
+        XCTAssertEqual(list, [0, 5, 6, 7, 1, 2, 3, 4])
+    }
 }
